@@ -1,9 +1,9 @@
 import React from "react";
-import "./NavBar.css";
+import "./Navbar.css";
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
 
-function NavBar() {
+function NavbarPanel() {
   return (
     <Navbar bg="light" data-bs-theme="light">
       <Container>
@@ -18,4 +18,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default NavbarPanel;
