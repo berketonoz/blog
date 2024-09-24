@@ -1,0 +1,67 @@
+.article-wrapper {
+    margin: 50px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .article-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .article-category,
+  .article-publish-date {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .article-languages {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+  
+  .language-list {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .language-badge {
+    padding: 5px 10px;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    background-color: #e7f0ff;
+    color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .language-badge.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .language-badge:hover {
+    background-color: #0056b3;
+    color: white;
+  }
+  
+  .article-details {
+    margin-top: 20px;
+  }
+  
+  hr {
+    margin: 20px 0;
+    border: 1px solid #ddd;
+  }
+  
+  .loading-indicator {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #777;
+  }
+  
