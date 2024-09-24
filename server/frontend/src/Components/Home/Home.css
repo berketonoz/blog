@@ -4,13 +4,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('background-image-2.jpg') no-repeat center center/cover;
+    background-size: cover;
+    background-position: center;
 }
 
 .main-container {
     background-color: transparent;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     margin: 0 5em;
 }
 
@@ -69,6 +71,30 @@
     }
 }
 
-.test{
-    height: 100vh;
+/* CTA button styling */
+.cta-button {
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #ff5733;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #ff7961;
+}
+
+/* Footer styling */
+.footer {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #111;
+    color: #fff;
+    position: relative;
 }
