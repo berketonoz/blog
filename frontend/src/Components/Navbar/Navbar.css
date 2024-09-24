@@ -27,5 +27,9 @@
 }
 
 .logo{
-    color: black !important;
-}  
+  color: #41464b !important;
+}
+  
+.nav-link{
+  color: #41464b !important;
+}

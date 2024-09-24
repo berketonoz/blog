@@ -19,7 +19,7 @@
 .content {
     font-size: 2rem;
     font-weight: bold;
-    color: rgb(16, 19, 21);
+    color: #41464b;
     display: flex;
 }
 
@@ -76,8 +76,8 @@
     margin-top: 2rem;
     padding: 0.8rem 2rem;
     font-size: 1.2rem;
-    color: #fff;
-    background-color: #ff5733;
+    color: #dee2e6;
+    background-color: #9d6b53;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -85,7 +85,7 @@
 }
 
 .cta-button:hover {
-    background-color: #ff7961;
+    background-color: #774936;
 }
 
 /* Footer styling */
@@ -94,7 +94,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #111;
-    color: #fff;
+    background-color: #212529;
+    color: #dee2e6;
     position: relative;
 }
