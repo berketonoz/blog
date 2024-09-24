@@ -1,0 +1,32 @@
+/* CodeSnippet.css */
+.code-snippet {
+    position: relative;
+    background-color: #e9ecef;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 20px;
+  }
+  
+  .copy-icon {
+    position: absolute;
+    padding: 2px 4px;
+    border: #212529 1px solid;
+    border-radius: 15%;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #495057; /* Bootstrap primary color */
+  }
+  
+  .copy-icon:hover {
+    background-color: #ced4da;
+  }
+  
+  pre {
+    margin: 0; /* Remove margin from <pre> */
+    padding: 10px; /* Optional padding */
+    white-space: pre-wrap; /* Allow line breaks */
+    word-wrap: break-word; /* Wrap long lines */
+  }
+  
