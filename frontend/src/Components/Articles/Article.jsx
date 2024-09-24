@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Tabs, Tab } from "react-bootstrap";
 import "./Article.css"; // Using the same CSS for shared styles
 
 const articles = [
@@ -35,7 +36,7 @@ const articles = [
 const Article = () => {
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
-  const [selectedLanguage, setSelectedLanguage] = useState("");
+  const [key, setKey] = useState("C++"); // Default tab
 
   const params = useParams();
   const id = params.id;
@@ -44,7 +45,7 @@ const Article = () => {
     const selectedArticle = articles.find((article) => article.id === Number(id));
     if (selectedArticle) {
       setArticle(selectedArticle);
-      setSelectedLanguage(selectedArticle.programmingLanguages[0]);
+      setKey(selectedArticle.programmingLanguages[0]); // Set default tab based on available languages
       setLoading(false);
     }
   }, [id]);
@@ -59,30 +60,21 @@ const Article = () => {
       <p className="article-category">
         <strong>Category:</strong> {article.category}
       </p>
-      <p className="article-languages">
-        <strong>Programming Languages:</strong>
-        <span className="language-list">
-          {article.programmingLanguages.map((language, index) => (
-            <span
-              key={index}
-              className={`language-badge ${language === selectedLanguage ? "active" : ""}`}
-              onClick={() => setSelectedLanguage(language)}
-            >
-              {language}
-            </span>
-          ))}
-        </span>
-      </p>
       <p className="article-publish-date">
         <strong>Published on:</strong> {article.publishDate}
       </p>
-      <hr />
-
-      {/* Tabs for different languages */}
-      <div className="article-details">
-        <h2>Details for {selectedLanguage}</h2>
-        <p>{article.details[selectedLanguage]}</p>
-      </div>
+      
+      {/* React-Bootstrap Tabs for different languages */}
+      <Tabs activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
+        {article.programmingLanguages.map((language) => (
+          <Tab eventKey={language} title={language} key={language}>
+            <div className="tab-content">
+              <h2>Details for {language}</h2>
+              <p>{article.details[language]}</p>
+            </div>
+          </Tab>
+        ))}
+      </Tabs>
     </div>
   );
 };
