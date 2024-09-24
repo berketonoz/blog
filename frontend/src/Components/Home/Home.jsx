@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import "./Home.css";
 import HomeBg from "../../assets/home-background.jpg"
+import Articles from "../Articles/Articles";
 
 function Home() {
   const text = "Welcome to Tony's Tech Blog";
@@ -29,6 +30,7 @@ function Home() {
       </div>
       <div ref={articlesRef} className="articles-section">
         {/* Your articles content here */}
+        <Articles />
       </div>
       <div className="footer">
         <p>&copy; 2024 Tony's Tech Blog. All rights reserved.</p>
