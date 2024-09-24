@@ -1,0 +1,74 @@
+/* Ensure the container and background styling */
+.background-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('background-image-2.jpg') no-repeat center center/cover;
+}
+
+.main-container {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    margin: 0 5em;
+}
+
+.content {
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(16, 19, 21);
+    display: flex;
+}
+
+/* Styling for each animated letter */
+.animated-letter {
+    display: inline-block;
+    opacity: 0;
+    animation: typingLetters 0.05s ease forwards;
+}
+
+
+/* Container for the dots */
+.dots {
+    display: inline-flex;
+    font-size: 2rem;
+    margin-left: 5px;
+    content: "";
+}
+
+.dots::before{
+    content: "";  /* Initial content */
+    display: inline-block;
+    animation: typingDots 2s infinite;
+    animation-delay: 2.5s;
+}
+
+/* Keyframes for the typing effect */
+@keyframes typingDots {
+    0% {
+        content: ""; /* Content at the start */
+    }
+    33% {
+        content: "."; /* Midpoint change */
+    }
+    66% {
+        content: ".."; /* Another change */
+    }
+    100% {
+        content: "..."; /* Loop back to original content */
+    }
+}
+
+@keyframes typingLetters {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.test{
+    height: 100vh;
+}
