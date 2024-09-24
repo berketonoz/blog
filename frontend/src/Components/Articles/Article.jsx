@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";
+import CodeSnippet from "../CodeSnippet/CodeSnippet";
 import "./Article.css"; // Using the same CSS for shared styles
 
 const articles = [
@@ -71,6 +72,7 @@ const Article = () => {
             <div className="tab-content">
               <h2>Details for {language}</h2>
               <p>{article.details[language]}</p>
+              <CodeSnippet code={`// Sample code for ${language}\nconsole.log("Hello, World!");`} />
             </div>
           </Tab>
         ))}
