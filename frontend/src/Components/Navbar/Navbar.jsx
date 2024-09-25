@@ -7,7 +7,7 @@ function NavbarPanel() {
 
   // Function to handle scroll event
   const handleScroll = () => {
-    if (window.scrollY > 100) {
+    if (window.scrollY > 40) {
       // Scroll threshold, change it as needed
       setNavbarBg(true);
     } else {
@@ -28,7 +28,7 @@ function NavbarPanel() {
   return (
     <Navbar
       className={`navbar navbar-expand-lg fixed-top ${
-        navbarBg ? "bg-light navbar-light" : "bg-transparent"
+        navbarBg ? "transparent-bg" : ""
       }`}
       variant={navbarBg ? "light" : "dark"} // Switch between light and dark variants
       >
