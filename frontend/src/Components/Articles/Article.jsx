@@ -84,12 +84,57 @@ int main(){
         cout << stack.pop() << endl;
     }
     return 0;
-}`
+}`,
       },
+      // Similarly, Python code snippets could be added here
       Python: {
-        // Similarly, Python code snippets could be added here
-      }
-    }
+        constructor: `
+class Stack:
+    def __init__(self):
+        self.stack = []  # Initialize an empty list to represent the stack
+        self.size = 0`, // Size starts at 0
+        destructor: `
+# In Python, explicit destructors like in C++ are not needed
+# Python's garbage collector handles memory management.
+# However, you can define a __del__ method to customize cleanup.
+class Stack:
+    def __del__(self):
+        print("Stack is being deleted")`,
+        push: `
+class Stack:
+    def push(self,node):
+        self.stack.append(node)
+        self.size += 1`,
+        pop: `
+class Stack:
+    def pop(self):
+        if self.isEmpty():
+            raise RuntimeError("Stack is empty")
+        self.size -= 1
+        return self.stack.pop()  # Remove and return the last element`,
+        isEmpty: `
+class Stack:
+    def is_empty(self):
+        return len(self.stack) == 0`,
+        main: `
+if __name__ == "__main__":
+    stack = Stack()
+    sample_list = ["This", "is", "a", "sample", "list"]
+    
+    print("Is stack empty?", stack.is_empty())  # True initially
+
+    # Push elements
+    for item in sample_list:
+        print(f"Pushing: {item}")
+        stack.push(item)
+
+    # Pop elements until the stack is empty
+    while not stack.is_empty():
+        print("Popped:", stack.pop())
+    
+    print("Is stack empty?", stack.is_empty())  # Should be True`,
+      },
+    },
   },
   // Other articles can go here
 ];
@@ -102,15 +147,22 @@ const Article = () => {
 
   const params = useParams();
   const id = params.id;
+  const language = params.language;
 
   useEffect(() => {
-    const selectedArticle = articles.find((article) => article.id === Number(id));
+    const selectedArticle = articles.find(
+      (article) => article.id === Number(id)
+    );
     if (selectedArticle) {
       setArticle(selectedArticle);
-      setKey(selectedArticle.programmingLanguages[0]); // Set default tab based on available languages
       setLoading(false);
+
+      typeof language === "undefined"
+        ? setKey(selectedArticle.programmingLanguages[0])
+        : setKey(language);
+      setKey(language); // Set the tab based on clicked language
     }
-  }, [id]);
+  }, [id, language]);
 
   if (loading) {
     return <div className="loading-indicator">Loading...</div>; // Return a div for loading state
@@ -125,7 +177,7 @@ const Article = () => {
       <p className="article-publish-date">
         <strong>Published on:</strong> {article.publishDate}
       </p>
-      
+
       {/* React-Bootstrap Tabs for different languages */}
       <Tabs activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
         {article.programmingLanguages.map((language) => (
@@ -135,25 +187,29 @@ const Article = () => {
               <p>{article.details[language]}</p>
 
               {/* Display code snippets for C++ */}
-              {language === "C++" && (
+              {article.codeSnippets[language] && (
                 <>
                   <h3>Constructor</h3>
-                  <CodeSnippet code={article.codeSnippets["C++"].constructor} />
-                  
+                  <CodeSnippet
+                    code={article.codeSnippets[language].constructor}
+                  />
+
                   <h3>Destructor</h3>
-                  <CodeSnippet code={article.codeSnippets["C++"].destructor} />
+                  <CodeSnippet
+                    code={article.codeSnippets[language].destructor}
+                  />
 
                   <h3>Push Method</h3>
-                  <CodeSnippet code={article.codeSnippets["C++"].push} />
+                  <CodeSnippet code={article.codeSnippets[language].push} />
 
                   <h3>Pop Method</h3>
-                  <CodeSnippet code={article.codeSnippets["C++"].pop} />
+                  <CodeSnippet code={article.codeSnippets[language].pop} />
 
                   <h3>isEmpty Method</h3>
-                  <CodeSnippet code={article.codeSnippets["C++"].isEmpty} />
+                  <CodeSnippet code={article.codeSnippets[language].isEmpty} />
 
                   <h3>Main Function</h3>
-                  <CodeSnippet code={article.codeSnippets["C++"].main} />
+                  <CodeSnippet code={article.codeSnippets[language].main} />
                 </>
               )}
 

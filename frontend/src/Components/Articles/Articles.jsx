@@ -27,27 +27,29 @@ const Articles = () => {
       <h1 className="article-header">Articles</h1>
       <ul className="article-list">
         {articles.map((article) => (
-          <Link to={`article/${article.id}`}>
-            <li key={article.id} className="article-item">
+          <li key={article.id} className="article-item">
+            <Link to={`article/${article.id}`}>
               <h2 className="title">{article.title}</h2>
-              <p className="info">
-                <strong>Category:</strong> {article.category}
-              </p>
-              <p className="info">
-                <strong>Programming Languages:</strong>
-                <span className="languages">
-                  {article.programmingLanguages.map((language, index) => (
-                    <span key={index} className="language-badge">
+            </Link>
+            <p className="info">
+              <strong>Category:</strong> {article.category}
+            </p>
+            <p className="info">
+              <strong>Programming Languages:</strong>
+              <span className="languages">
+                {article.programmingLanguages.map((language, index) => (
+                  <span key={index} className="language-badge">
+                    <Link key={index} to={`article/${article.id}/${language}`}>
                       {language}
-                    </span>
-                  ))}
-                </span>
-              </p>
-              <p className="info">
-                <strong>Published on:</strong> {article.publishDate}
-              </p>
-            </li>
-          </Link>
+                    </Link>
+                  </span>
+                ))}
+              </span>
+            </p>
+            <p className="info">
+              <strong>Published on:</strong> {article.publishDate}
+            </p>
+          </li>
         ))}
       </ul>
     </div>
