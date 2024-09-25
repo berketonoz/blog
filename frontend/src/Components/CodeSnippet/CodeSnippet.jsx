@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClipboard } from "@fortawesome/free-solid-svg-icons";
+import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { prism } from "react-syntax-highlighter/dist/esm/styles/prism"; // You can choose any style you prefer
 import "./CodeSnippet.css"; // Optional: CSS file for styling
@@ -39,7 +39,7 @@ const CodeSnippet = ({ code }) => {
           onClick={handleCopy}
           aria-label="Copy to clipboard"
           role="button">
-          <FontAwesomeIcon icon={faClipboard} />
+          <FontAwesomeIcon icon={faCopy} />
         </div>
         {isVisible && (
           <div className={`tooltip ${fadeOut ? "fade-out" : ""}`}>
