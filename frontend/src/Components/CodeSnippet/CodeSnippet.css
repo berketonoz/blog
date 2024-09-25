@@ -1,32 +1,51 @@
-/* CodeSnippet.css */
 .code-snippet {
-    position: relative;
-    background-color: #e9ecef;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-top: 20px;
-  }
-  
-  .copy-icon {
-    position: absolute;
-    padding: 2px 4px;
-    border: #212529 1px solid;
-    border-radius: 15%;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    color: #495057; /* Bootstrap primary color */
-  }
-  
-  .copy-icon:hover {
-    background-color: #ced4da;
-  }
-  
-  pre {
-    margin: 0; /* Remove margin from <pre> */
-    padding: 10px; /* Optional padding */
-    white-space: pre-wrap; /* Allow line breaks */
-    word-wrap: break-word; /* Wrap long lines */
-  }
-  
+  position: relative;
+  background-color: #e9ecef;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.copy-icon {
+  position: absolute;
+  padding: 2px 4px;
+  border: #212529 1px solid;
+  border-radius: 15%;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: #495057; /* Bootstrap primary color */
+  transition: background-color 0.2s;
+}
+
+.copy-icon:hover {
+  background-color: #ced4da;
+}
+
+.tooltip {
+  background-color: rgba(0, 0, 0, 0.85); /* Darker background */
+  color: #fff;
+  padding: 5px 10px; /* More padding for better appearance */
+  border-radius: 4px;
+  position: absolute;
+  z-index: 1000; /* Ensure it's above other elements */
+  pointer-events: none; /* Prevent tooltip from capturing mouse events */
+  opacity: 0.9;
+  transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+
+.tooltip.fade-out {
+  opacity: 0; /* Fade out state */
+}
+
+pre {
+  margin: 0; /* Remove margin from <pre> */
+  white-space: pre-wrap; /* Allow line breaks */
+  word-wrap: break-word; /* Wrap long lines */
+}
+
+.icons-container {
+  display: flex;
+  justify-content: center;
+}
