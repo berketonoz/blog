@@ -4,6 +4,7 @@ import { Tabs, Tab } from "react-bootstrap";
 import CodeSnippet from "../CodeSnippet/CodeSnippet";
 import "./Article.css"; // Using the same CSS for shared styles
 
+// Articles array with code snippets divided into parts
 const articles = [
   {
     id: 1,
@@ -17,20 +18,80 @@ const articles = [
       Python:
         "In Python, the stack can be implemented using lists. Lists in Python provide the functionality of a dynamic array, but they can also be used to implement a stack by using the append() and pop() methods.",
     },
+    codeSnippets: {
+      "C++": {
+        constructor: `
+template <typename T>
+Stack<T>::Stack(/* args */)
+{
+    this->size = 0;
+    this->head = nullptr;
+}`,
+        destructor: `
+template <typename T>
+Stack<T>::~Stack()
+{
+    while (!this->isEmpty())
+        T item = this->pop();
+}`,
+        push: `
+template <typename T>
+void Stack<T>::push(T value)
+{
+    Node<T> *new_head = new Node<T>(value);
+    new_head->prev = this->head;
+    this->head = new_head;
+    this->size++;
+}`,
+        pop: `
+template <typename T>
+T Stack<T>::pop() {
+    if (isEmpty()) {
+        throw std::runtime_error("Stack is empty"); // Throw an error if stack is empty
+    }
+
+    Node<T>* temp = this->head;          // Store the top node
+    T value = temp->data;                // Get the data from the top node
+    this->head = this->head->prev;       // Move head to the next node
+    delete temp;                         // Delete the old top node
+    this->size--;                        // Decrement size
+    return value;                        // Return the popped value
+}`,
+        isEmpty: `
+template <typename T>
+bool Stack<T>::isEmpty()
+{
+    return this->head == nullptr;
+}`,
+        main: `
+#include <iostream>
+#include <string>
+#include <vector>
+#include "Stack.h"
+using namespace std;
+
+int main(){
+    Stack<string> stack = Stack<string>();
+    vector<string> sampleVec = {"This","is","a","sample","vector"};
+    cout << stack.isEmpty() << endl;
+    for (int i = 0; i < sampleVec.size(); i++)
+    {
+        cout << "Push: " << sampleVec[i] << endl;
+        stack.push(sampleVec[i]);
+    }
+    while (!stack.isEmpty())
+    {
+        cout << stack.pop() << endl;
+    }
+    return 0;
+}`
+      },
+      Python: {
+        // Similarly, Python code snippets could be added here
+      }
+    }
   },
-  {
-    id: 2,
-    title: "Linked List",
-    category: "Data Structures",
-    publishDate: "2024-09-26",
-    programmingLanguages: ["C++", "Python"],
-    details: {
-      "C++":
-        "A linked list in C++ is a data structure in which each element (node) contains a pointer to the next node in the sequence. It allows for efficient insertion and deletion operations.",
-      Python:
-        "In Python, a linked list is typically implemented using classes. Each node contains data and a reference to the next node. It can be implemented manually since Python doesn't have a built-in linked list.",
-    },
-  },
+  // Other articles can go here
 ];
 
 // Article Component for displaying detailed article view with tabs for language
@@ -72,7 +133,31 @@ const Article = () => {
             <div className="tab-content">
               <h2>Details for {language}</h2>
               <p>{article.details[language]}</p>
-              <CodeSnippet code={`// Sample code for ${language}\nconsole.log("Hello, World!");`} />
+
+              {/* Display code snippets for C++ */}
+              {language === "C++" && (
+                <>
+                  <h3>Constructor</h3>
+                  <CodeSnippet code={article.codeSnippets["C++"].constructor} />
+                  
+                  <h3>Destructor</h3>
+                  <CodeSnippet code={article.codeSnippets["C++"].destructor} />
+
+                  <h3>Push Method</h3>
+                  <CodeSnippet code={article.codeSnippets["C++"].push} />
+
+                  <h3>Pop Method</h3>
+                  <CodeSnippet code={article.codeSnippets["C++"].pop} />
+
+                  <h3>isEmpty Method</h3>
+                  <CodeSnippet code={article.codeSnippets["C++"].isEmpty} />
+
+                  <h3>Main Function</h3>
+                  <CodeSnippet code={article.codeSnippets["C++"].main} />
+                </>
+              )}
+
+              {/* Add similar blocks for Python if needed */}
             </div>
           </Tab>
         ))}
