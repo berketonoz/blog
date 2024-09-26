@@ -33,11 +33,11 @@ function NavbarPanel() {
       variant={navbarBg ? "light" : "dark"} // Switch between light and dark variants
       >
       <Container>
-        <Navbar.Brand href="/" className="logo">Tony</Navbar.Brand>
+        <Navbar.Brand href="/blog" className="logo">Tony</Navbar.Brand>
         <Nav>
-            <Nav.Link href="/" className="animated-link">Home</Nav.Link>
-            <Nav.Link href="/about" className="animated-link">About</Nav.Link>
-            <Nav.Link href="/contact" className="animated-link">Contac</Nav.Link>
+            <Nav.Link href="/blog" className="animated-link">Home</Nav.Link>
+            <Nav.Link href="/blog/about" className="animated-link">About</Nav.Link>
+            <Nav.Link href="/blog/contact" className="animated-link">Contact</Nav.Link>
           </Nav>
       </Container>
     </Navbar>
