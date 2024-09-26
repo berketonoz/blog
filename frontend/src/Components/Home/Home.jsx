@@ -31,9 +31,6 @@ function Home() {
       <div ref={articlesRef} className="articles-section">
         <Articles />
       </div>
-      <div className="footer">
-        <p>&copy; 2024 Tony's Tech Blog. All rights reserved.</p>
-      </div>
     </>
   );
 }

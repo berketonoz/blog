@@ -4,6 +4,7 @@ import Home from "./Components/Home/Home";
 import Navbar from "./Components/Navbar/Navbar";
 import About from "./Components/Aboutme/AboutMe";
 import Article from "./Components/Articles/Article";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/article/:id" element={<Article />} />
     </Routes>
+    <Footer />
     </>
   );
 }
