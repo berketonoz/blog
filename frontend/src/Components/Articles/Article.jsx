@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";
 import CodeSnippet from "../CodeSnippet/CodeSnippet";
 import "./Article.css"; // Using the same CSS for shared styles
+import CommentForm from "../Comments/Comments";
 
-// Articles array with code snippets divided into parts
+// Articles array with code snippets and descriptions for each function
 const articles = [
   {
     id: 1,
@@ -17,6 +18,28 @@ const articles = [
         "In C++, a stack can be implemented using the Standard Template Library (STL). The stack is a linear data structure that follows LIFO (Last In First Out) principle. The major operations on a stack are push, pop, and top.",
       Python:
         "In Python, the stack can be implemented using lists. Lists in Python provide the functionality of a dynamic array, but they can also be used to implement a stack by using the append() and pop() methods.",
+    },
+    descriptions: {
+      "C++": {
+        constructor:
+          "This is the constructor for the Stack class. It initializes an empty stack with a size of 0 and sets the head to nullptr.",
+        destructor:
+          "This is the destructor for the Stack class. It ensures that all allocated memory is freed when the stack is no longer needed by popping all the elements from the stack.",
+        push: "The push function adds a new element to the top of the stack. It creates a new node and links it as the new head of the stack.",
+        pop: "The pop function removes the top element from the stack. If the stack is empty, it throws an error. Otherwise, it returns the top value and adjusts the head to point to the previous element.",
+        isEmpty:
+          "The isEmpty function checks whether the stack is empty by verifying if the head is nullptr.",
+        main: "This is a sample main function that demonstrates how to use the Stack class by pushing elements onto the stack and then popping them off.",
+      },
+      Python: {
+        constructor:
+          "This is the constructor for the Stack class in Python. It initializes an empty list that will act as the stack.",
+        push: "The push method appends a new element to the end of the list, representing the top of the stack.",
+        pop: "The pop method removes and returns the last element of the list. It raises an IndexError if the stack is empty.",
+        isEmpty:
+          "The isEmpty method checks whether the stack is empty by verifying if the list has no elements.",
+        main: "This is a sample main function that demonstrates how to use the Stack class in Python by pushing elements onto the stack and then popping them off.",
+      },
     },
     codeSnippets: {
       "C++": {
@@ -86,36 +109,22 @@ int main(){
     return 0;
 }`,
       },
-      // Similarly, Python code snippets could be added here
       Python: {
         constructor: `
 class Stack:
     def __init__(self):
-        self.stack = []  # Initialize an empty list to represent the stack
-        self.size = 0`, // Size starts at 0
-        destructor: `
-# In Python, explicit destructors like in C++ are not needed
-# Python's garbage collector handles memory management.
-# However, you can define a __del__ method to customize cleanup.
-class Stack:
-    def __del__(self):
-        print("Stack is being deleted")`,
+        self.stack = []  # Initializes an empty stack using a list`,
         push: `
-class Stack:
-    def push(self,node):
-        self.stack.append(node)
-        self.size += 1`,
+    def push(self, value):
+        self.stack.append(value)  # Appends value to the stack`,
         pop: `
-class Stack:
     def pop(self):
-        if self.isEmpty():
-            raise RuntimeError("Stack is empty")
-        self.size -= 1
-        return self.stack.pop()  # Remove and return the last element`,
+        if self.is_empty():
+            raise IndexError("Stack is empty")  # Raise error if stack is empty
+        return self.stack.pop()  # Removes and returns the last element`,
         isEmpty: `
-class Stack:
     def is_empty(self):
-        return len(self.stack) == 0`,
+        return len(self.stack) == 0  # Returns True if the stack is empty`,
         main: `
 if __name__ == "__main__":
     stack = Stack()
@@ -135,90 +144,71 @@ if __name__ == "__main__":
     print("Is stack empty?", stack.is_empty())  # Should be True`,
       },
     },
+    comments: [
+    ],
   },
-  // Other articles can go here
 ];
 
-// Article Component for displaying detailed article view with tabs for language
 const Article = () => {
-  const [article, setArticle] = useState({});
-  const [loading, setLoading] = useState(true);
-  const [key, setKey] = useState("C++"); // Default tab
+  const { id } = useParams();
+  const article = articles.find((article) => article.id === parseInt(id));
 
-  const params = useParams();
-  const id = params.id;
-  const language = params.language;
-
-  useEffect(() => {
-    const selectedArticle = articles.find(
-      (article) => article.id === Number(id)
-    );
-    if (selectedArticle) {
-      setArticle(selectedArticle);
-      setLoading(false);
-
-      typeof language === "undefined"
-        ? setKey(selectedArticle.programmingLanguages[0])
-        : setKey(language);
-      setKey(language); // Set the tab based on clicked language
-    }
-  }, [id, language]);
-
-  if (loading) {
-    return <div className="loading-indicator">Loading...</div>; // Return a div for loading state
-  }
+  // useEffect(() => {
+  //   window.scroll(0, 0);
+  // }, []);
 
   return (
-    <div className="article-wrapper">
-      <h1 className="article-title">{article.title}</h1>
-      <p className="article-category">
-        <strong>Category:</strong> {article.category}
-      </p>
-      <p className="article-publish-date">
-        <strong>Published on:</strong> {article.publishDate}
-      </p>
-
-      {/* React-Bootstrap Tabs for different languages */}
-      <Tabs activeKey={key} onSelect={(k) => setKey(k)} className="mb-3">
-        {article.programmingLanguages.map((language) => (
-          <Tab eventKey={language} title={language} key={language}>
-            <div className="tab-content">
-              <h2>Details for {language}</h2>
-              <p>{article.details[language]}</p>
-
-              {/* Display code snippets for C++ */}
-              {article.codeSnippets[language] && (
-                <>
-                  <h3>Constructor</h3>
-                  <CodeSnippet
-                    code={article.codeSnippets[language].constructor}
-                  />
-
-                  <h3>Destructor</h3>
-                  <CodeSnippet
-                    code={article.codeSnippets[language].destructor}
-                  />
-
-                  <h3>Push Method</h3>
-                  <CodeSnippet code={article.codeSnippets[language].push} />
-
-                  <h3>Pop Method</h3>
-                  <CodeSnippet code={article.codeSnippets[language].pop} />
-
-                  <h3>isEmpty Method</h3>
-                  <CodeSnippet code={article.codeSnippets[language].isEmpty} />
-
-                  <h3>Main Function</h3>
-                  <CodeSnippet code={article.codeSnippets[language].main} />
-                </>
-              )}
-
-              {/* Add similar blocks for Python if needed */}
-            </div>
-          </Tab>
-        ))}
-      </Tabs>
-    </div>
+    <>
+      <div className="article-wrapper">
+        <h2 className="article-title">{article.title}</h2>
+        <div className="article-category">{article.category}</div>
+        <div className="article-publish-date">{article.publishDate}</div>
+        <div className="article-languages">
+          Programming Languages:
+        </div>
+        <Tabs defaultActiveKey={article.programmingLanguages[0]}>
+          {article.programmingLanguages.map((lang) => (
+            <Tab eventKey={lang} title={lang} key={lang}>
+              <div className="article-details">
+                <p>{article.details[lang]}</p>
+                <hr />
+                <h3>Constructor</h3>
+                <p className="function-description">
+                  {article.descriptions[lang].constructor}
+                </p>
+                <CodeSnippet code={article.codeSnippets[lang].constructor} />
+                <h3>Destructor</h3>
+                <p className="function-description">
+                  {article.descriptions[lang].destructor}
+                </p>
+                <CodeSnippet code={article.codeSnippets[lang].destructor} />
+                <h3>Push Function</h3>
+                <p className="function-description">
+                  {article.descriptions[lang].push}
+                </p>
+                <CodeSnippet code={article.codeSnippets[lang].push} />
+                <h3>Pop Function</h3>
+                <p className="function-description">
+                  {article.descriptions[lang].pop}
+                </p>
+                <CodeSnippet code={article.codeSnippets[lang].pop} />
+                <h3>isEmpty Function</h3>
+                <p className="function-description">
+                  {article.descriptions[lang].isEmpty}
+                </p>
+                <CodeSnippet code={article.codeSnippets[lang].isEmpty} />
+                <h3>Main Function</h3>
+                <p className="function-description">
+                  {article.descriptions[lang].main}
+                </p>
+                <CodeSnippet code={article.codeSnippets[lang].main} />
+              </div>
+            </Tab>
+          ))}
+        </Tabs>
+      </div>
+      <CommentForm comments={article.comments}/>
+    </>
   );
 };
 
