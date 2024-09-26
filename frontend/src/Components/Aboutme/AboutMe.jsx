@@ -1,6 +1,6 @@
 import React from "react";
 import "./AboutMe.css";
-import UserImg from "../../assets/user-image.png";
+import UserImg from "../../assets/profile-picture.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
