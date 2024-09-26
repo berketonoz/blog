@@ -24,10 +24,11 @@
   }
 
   .profile-image {
-    width: 600px; /* Set the profile image size */
-    height: 200px;
-    border-radius: 50%; /* Make it circular */
-    margin-right: 20px; /* Space between image and text */
+    width: 1200px;
+    min-width: 200px;
+    border-radius: 40%;
+    margin-right: 20px;
+    box-shadow: 2px 4px 8px #343a40;
   }
   
   .bio-content {
@@ -66,16 +67,11 @@
   
   .social-links {
     display: flex; /* Align icons in a row */
+    gap: 0.5rem;
     margin-top: 20px; /* Space above the icons */
   }
   
-  .social-links a {
-    color: #555; /* Icon color */
-    margin: 0 10px; /* Space between icons */
-    transition: color 0.3s; /* Smooth color transition on hover */
-  }
-  
-  .social-links a:hover {
-    color: #0073e6; /* Change color on hover */
-  }
+  /* .social-links a:hover {
+    color: #0073e6;
+  } */
   
