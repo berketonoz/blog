@@ -1,0 +1,36 @@
+/* Footer styling */
+.footer {
+    background-color: #495057; /* Dark background */
+    color: #dee2e6; /* Light text color */
+    text-align: center; /* Center align text */
+    padding: 20px; /* Padding around footer */
+    position: relative; /* Ensure it stays at the bottom */
+    bottom: 0;
+    width: 100%; /* Full width */
+}
+
+.footer p {
+    margin: 0; /* Remove default margin */
+    font-size: 1rem; /* Font size for the footer text */
+}
+
+/* Responsive rules for phone view */
+@media (max-width: 768px) {
+    .footer {
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+
+    .footer p {
+        font-size: 0.9rem; /* Slightly smaller font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 10px; /* Further reduce padding */
+    }
+
+    .footer p {
+        font-size: 0.8rem; /* Further decrease font size */
+    }
+}
