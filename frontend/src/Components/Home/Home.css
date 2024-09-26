@@ -14,6 +14,7 @@
     flex-direction: column;
     justify-content: center;
     margin: 0 5em;
+    align-items: center;
 }
 
 .content {
@@ -21,6 +22,7 @@
     font-weight: bold;
     color: #41464b;
     display: flex;
+    align-items: center;
 }
 
 /* Styling for each animated letter */
@@ -30,16 +32,15 @@
     animation: typingLetters 0.05s ease forwards;
 }
 
-
 /* Container for the dots */
 .dots {
     display: inline-flex;
     font-size: 2rem;
     margin-left: 5px;
-    content: "";
+    height: 1.5rem;
 }
 
-.dots::before{
+.dots::before {
     content: "";  /* Initial content */
     display: inline-block;
     animation: typingDots 2s infinite;
@@ -63,38 +64,113 @@
 }
 
 @keyframes typingLetters {
-    0%{
+    0% {
         opacity: 0;
     }
-    100%{
+    100% {
         opacity: 1;
     }
 }
 
 /* CTA button styling */
 .cta-button {
-    margin-top: 2rem;
+    margin-top: 5rem;
     padding: 0.8rem 2rem;
     font-size: 1.2rem;
     color: #dee2e6;
-    background-color: #9d6b53;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    background-color: #495057;
     border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
 .cta-button:hover {
-    background-color: #774936;
+    background-color: #6c757d;
+}
+
+.articles-section{
+    display: flex;
+    justify-content: center;
 }
 
 /* Footer styling */
 .footer {
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #212529;
-    color: #dee2e6;
-    position: relative;
+    background-color: #495057; /* Dark background */
+    color: #dee2e6; /* Light text color */
+    text-align: center; /* Center align text */
+    padding: 20px; /* Padding around footer */
+    position: relative; /* Ensure it stays at the bottom */
+    bottom: 0;
+    width: 100%; /* Full width */
+}
+
+.footer p {
+    margin: 0; /* Remove default margin */
+    font-size: 1rem; /* Font size for the footer text */
+}
+
+/* Responsive rules for phone view */
+@media (max-width: 768px) {
+    .main-container {
+        margin: 0 2em;
+        align-items: center; /* Center items in smaller screens */
+        text-align: center; /* Center the text */
+    }
+
+    .content {
+        font-size: 1.6rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dots {
+        font-size: 1.6rem; /* Adjust size of dots */
+        margin-left: 0; /* Align the dots to the center */
+    }
+
+    .cta-button {
+        padding: 0.6rem 2rem; /* Adjust button padding */
+        font-size: 1.6rem; /* Adjust button font size */
+    }
+
+    .background-container {
+        background-position: top; /* Adjust background position for smaller screens */
+    }
+
+    .footer {
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+
+    .footer p {
+        font-size: 0.9rem; /* Slightly smaller font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        margin: 0 1em; /* Further adjust margins for very small screens */
+    }
+
+    .content {
+        font-size: 1.2rem;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+    }
+    
+    .dots {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        font-size: 1.2rem; /* Further reduce button font size */
+        margin-top: 30%;
+    }
+
+    .footer {
+        padding: 10px; /* Further reduce padding */
+    }
+
+    .footer p {
+        font-size: 0.8rem; /* Further decrease font size */
+    }
 }
