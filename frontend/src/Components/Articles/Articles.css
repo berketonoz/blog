@@ -1,48 +1,32 @@
 .article-container {
-  /* max-width: 1200px;  */
-  min-width: 500px;
-  margin: 0 4%;
+  width: 95%;         /* Full width on smaller screens */
+  margin: 2%;       /* Side margins */
   padding: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f7f9;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
-  margin-bottom: 20px;
 }
 
-.article-header {
-  text-align: center;
-  color: #333;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #ddd;
-  padding-bottom: 10px;
-}
-
-.article-detail-header{
-  display: flex;
-  gap: 2rem;
-  /* justify-content: space-between;
-  padding: 0.5em; */
-}
-
+/* Ensure the article list is a flex container for better responsiveness */
 .article-list {
-  list-style-type: none;
-  padding: 0;
+  list-style-type: none; /* Remove default list styling */
+  padding: 0;           /* Remove default padding */
 }
 
+/* Article item styling */
 .article-item {
-  background-color: #fff;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  transition: box-shadow 0.3s ease;
+  margin: 20px 0;      /* Vertical spacing between articles */
+  padding: 15px;       /* Internal padding */
+  border: 1px solid #ddd; /* Border around each article */
+  border-radius: 5px;  /* Rounded corners */
+  background-color: #fff; /* White background for articles */
+  transition: box-shadow 0.3s; /* Smooth hover effect */
 }
 
+/* Hover effect */
 .article-item:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow on hover */
 }
 
 .title {
@@ -81,4 +65,58 @@
 
 .button {
   margin-top: 10px; /* Adds space above the button */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .article-container {
+    margin: 1%; /* Reduce margins for smaller screens */
+    padding: 10px; /* Reduce padding for smaller screens */
+  }
+
+  .article-item {
+    margin: 15px 0; /* Reduce margin between articles */
+    padding: 10px; /* Reduce internal padding */
+  }
+
+  .article-detail-header {
+    flex-direction: column; /* Stack details vertically */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .title {
+    font-size: 1.5rem; /* Decrease font size for titles */
+  }
+
+  .info {
+    font-size: 0.9rem; /* Smaller font for info */
+  }
+
+  .description {
+    font-size: 0.9rem; /* Smaller font for descriptions */
+  }
+
+  .button-container {
+    text-align: center; /* Center buttons on smaller screens */
+  }
+
+  .item-badge {
+    margin: 0 5px; /* Adjust margin for badges */
+    font-size: 0.8rem; /* Smaller font for badges */
+  }
+}
+
+/* Further adjustments for mobile devices */
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.2rem; /* Further decrease title size */
+  }
+
+  .info {
+    font-size: 0.8rem; /* Further decrease info size */
+  }
+
+  .description {
+    font-size: 0.8rem; /* Further decrease description size */
+  }
 }

@@ -9,7 +9,7 @@ import CommentForm from "../Comments/Comments";
 const articles = [
   {
     id: 1,
-    title: "Stack",
+    title: "Understanding Stacks: A Comprehensive Guide",
     category: "Data Structures",
     publishDate: "2024-09-24",
     programmingLanguages: ["C++", "Python"],
