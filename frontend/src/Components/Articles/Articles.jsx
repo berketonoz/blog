@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { faCalendar, faComment } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Articles.css"; // Import the external CSS file
 
 // Static list of beginner-friendly data structure articles
@@ -22,7 +24,7 @@ const articles = [
     publishDate: "2024-09-26",
     programmingLanguages: ["C++", "Python"],
     description:
-    "Explore linked lists, a versatile data structure that allows for dynamic memory allocation, with clear examples and comparisons to arrays in C++ and Python.",
+      "Explore linked lists, a versatile data structure that allows for dynamic memory allocation, with clear examples and comparisons to arrays in C++ and Python.",
     comments: [],
   },
 ];
@@ -37,25 +39,30 @@ const Articles = () => {
         {articles.map((article) => (
           <li key={article.id} className="article-item">
             <h2 className="title">{article.title}</h2>
-            <p className="info">
-              <strong>Programming Languages:</strong>
-              <span className="languages">
-                {article.programmingLanguages.map((language, index) => (
-                  <span key={index} className="language-badge">
-                    {language}
-                  </span>
-                ))}
-              </span>
-            </p>
-            <p className="info">
-              <strong>Published on:</strong> {article.publishDate}
-            </p>
-            <p className="info">
-              <strong>Category:</strong> {article.category}
-            </p>
-            <p className="info">
-              <strong>Comments:</strong> {article.comments.length}
-            </p>
+            <div className="article-detail-header">
+              <p className="info">
+                <strong>Programming Languages:</strong>
+                <span className="info-item">
+                  {article.programmingLanguages.map((language, index) => (
+                    <span key={index} className="item-badge">
+                      {language}
+                    </span>
+                  ))}
+                </span>
+              </p>
+              <p className="info">
+                <strong>Category:</strong>
+                <span className="info-item">
+                  <span className="item-badge">{article.category}</span>
+                </span>
+              </p>
+              <p className="info">
+                <FontAwesomeIcon icon={faCalendar} /> {article.publishDate}
+              </p>
+              <p className="info">
+                <FontAwesomeIcon icon={faComment} /> {article.comments.length}
+              </p>
+            </div>
             <p className="description">{article.description}</p>
             <div className="button-container">
               <Button
