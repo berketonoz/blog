@@ -35,7 +35,11 @@
   color: #41464b !important;
 }
 
+.navbar-nav{
+  gap: 1em;
+}
+
 /* Navbar link color */
-.nav-link {
+.link {
   color: #41464b !important;
 }

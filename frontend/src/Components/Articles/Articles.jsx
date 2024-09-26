@@ -67,7 +67,7 @@ const Articles = () => {
             <div className="button-container">
               <Button
                 variant="primary"
-                onClick={() => navigate(`/blog/article/${article.id}`)}
+                onClick={() => navigate(`/article/${article.id}`)}
               >
                 Continue Reading
               </Button>

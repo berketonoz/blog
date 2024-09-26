@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
 import { Navbar, Container, Nav } from "react-bootstrap";
 
 function NavbarPanel() {
@@ -31,14 +32,22 @@ function NavbarPanel() {
         navbarBg ? "transparent-bg" : ""
       }`}
       variant={navbarBg ? "light" : "dark"} // Switch between light and dark variants
-      >
+    >
       <Container>
-        <Navbar.Brand href="/blog" className="logo">Tony</Navbar.Brand>
+        <Navbar.Brand className="logo">
+          <Link to="/">Tony</Link>
+        </Navbar.Brand>
         <Nav>
-            <Nav.Link href="/blog" className="animated-link">Home</Nav.Link>
-            <Nav.Link href="/blog/about" className="animated-link">About</Nav.Link>
-            <Nav.Link href="/blog/contact" className="animated-link">Contact</Nav.Link>
-          </Nav>
+          <Link to="/" className="animated-link">
+            Home
+          </Link>
+          <Link to="/about" className="animated-link">
+            About
+          </Link>
+          <Link to="/contact" className="animated-link">
+            Contact
+          </Link>
+        </Nav>
       </Container>
     </Navbar>
   );
