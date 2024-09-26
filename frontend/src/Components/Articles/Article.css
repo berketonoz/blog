@@ -1,5 +1,5 @@
 .article-wrapper {
-    margin: 40px;
+    margin: 20px;
     margin-top: 60px;
     padding: 20px;
     border: 1px solid #ddd;
@@ -8,7 +8,6 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
-  /* Styling the headers (h3) */
 .article-wrapper h3 {
   margin-top: 20px;
   margin-bottom: 10px;
@@ -41,23 +40,8 @@
     gap: 10px;
   }
   
-  .language-badge {
-    padding: 5px 10px;
-    border: 1px solid #007bff;
-    border-radius: 4px;
-    background-color: #e7f0ff;
-    color: #007bff;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
   .language-badge.active {
     background-color: #007bff;
-    color: white;
-  }
-  
-  .language-badge:hover {
-    background-color: #0056b3;
     color: white;
   }
   
@@ -75,4 +59,15 @@
     font-size: 1.5rem;
     color: #777;
   }
+  
+  .article-details {
+    margin-top: 20px;
+  }
+  
+  .function-description {
+    margin: 10px 0;
+    font-style: italic;
+    color: #555;
+  }
+  
   
