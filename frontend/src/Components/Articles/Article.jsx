@@ -153,9 +153,9 @@ const Article = () => {
   const { id } = useParams();
   const article = articles.find((article) => article.id === parseInt(id));
 
-  // useEffect(() => {
-  //   window.scroll(0, 0);
-  // }, []);
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   return (
     <>
