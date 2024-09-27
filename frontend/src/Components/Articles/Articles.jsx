@@ -1,37 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { faCalendar, faComment } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Articles.css"; // Import the external CSS file
 
-// Static list of beginner-friendly data structure articles
-const articles = [
-  {
-    id: 1,
-    title: "Understanding Stacks: A Comprehensive Guide",
-    category: "Data Structures",
-    publishDate: "2024-09-24",
-    programmingLanguages: ["C++", "Python"],
-    description:
-      "Learn the fundamentals of stacks, a crucial data structure used for managing data in a LIFO (Last In, First Out) manner, along with practical examples in C++ and Python.",
-    comments: [],
-  },
-  {
-    id: 2,
-    title: "Linked Lists Explained: From Basics to Advanced",
-    category: "Data Structures",
-    publishDate: "2024-09-26",
-    programmingLanguages: ["C++", "Python"],
-    description:
-      "Explore linked lists, a versatile data structure that allows for dynamic memory allocation, with clear examples and comparisons to arrays in C++ and Python.",
-    comments: [],
-  },
-];
-
 // Articles Component
 const Articles = () => {
+  const [articles, setArticles] = useState([]);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch("/data/articles.json")
+      .then((response) => response.json())
+      .then((data) => setArticles(data))
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="article-container">
       <h1 className="article-header">Articles</h1>
