@@ -9,9 +9,10 @@ import "./Articles.css"; // Import the external CSS file
 const Articles = () => {
   const [articles, setArticles] = useState([]);
   const navigate = useNavigate();
+  const url = 'https://raw.githubusercontent.com/berketonoz/blog/refs/heads/dev/frontend/public/articles.json';
 
   useEffect(() => {
-    fetch("/data/articles.json")
+    fetch(url)
       .then((response) => response.json())
       .then((data) => setArticles(data))
       .catch((err) => console.log(err));

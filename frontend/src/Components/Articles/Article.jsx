@@ -10,11 +10,11 @@ const Article = () => {
   const [article, setArticle] = useState({});
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-  // const article = articles.find((article) => article.id === parseInt(id));
+  const url = "https://raw.githubusercontent.com/berketonoz/blog/refs/heads/dev/frontend/public/articles.json";
 
   useEffect(() => {
     window.scroll(0, 0);
-    fetch("./data/articles.json")
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setArticle(data.find((article) => article.id === parseInt(id)));
