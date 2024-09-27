@@ -3,20 +3,20 @@ import { Form, Button, Card, Alert } from "react-bootstrap";
 import "./Comments.css";
 
 const CommentForm = ({ comments }) => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [name, setName] = useState("");
   const [comment, setComment] = useState("");
   const [commentsList, setCommentsList] = useState(comments);
   const [errorMessage, setErrorMessage] = useState("");
 
   const getFormattedDateTime = () => {
-    return new Date(); // Return the Date object directly
+    return new Date().getDate(); // Return the Date object directly
   };
 
   const timeAgo = (date) => {
     const now = new Date();
     const seconds = Math.floor((now - date) / 1000);
-
+    console.log(now.valueOf());
+    
     // Calculate time intervals
     const intervals = [
       { label: "years", seconds: 31536000 },
@@ -39,18 +39,17 @@ const CommentForm = ({ comments }) => {
     e.preventDefault();
     setErrorMessage(""); // Reset the error message
 
-    if (!firstName || !lastName || !comment) {
+    if (!name || !comment) {
       setErrorMessage("Please fill in all fields."); // Set error message
       return;
     }
 
     const commentDate = getFormattedDateTime(); // Get the current Date object
-    const newComment = { firstName, lastName, comment, date: commentDate };
+    const newComment = { name, comment, date: commentDate };
     setCommentsList([...commentsList, newComment]);
 
     // Clear the form fields
-    setFirstName("");
-    setLastName("");
+    setName("");
     setComment("");
   };
 
@@ -60,7 +59,7 @@ const CommentForm = ({ comments }) => {
         {commentsList.map((c, index) => (
           <Card key={`${c.date}-${index}`} className="mb-2">
             <Card.Body>
-              <Card.Title>{`${c.firstName} ${c.lastName}`}</Card.Title>
+              <Card.Title>{c.name}</Card.Title>
               <Card.Text>{c.comment}</Card.Text>
               <small className="text-muted">{timeAgo(c.date)}</small> {/* Display time ago */}
             </Card.Body>
@@ -74,23 +73,13 @@ const CommentForm = ({ comments }) => {
         <Card.Body>
           <h5>Post a Comment</h5>
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formFirstName">
-              <Form.Label>First Name</Form.Label>
+            <Form.Group controlId="formName">
+              <Form.Label>Name</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter your first name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-              />
-            </Form.Group>
-
-            <Form.Group controlId="formLastName">
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter your last name"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                placeholder="Enter your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </Form.Group>
 
