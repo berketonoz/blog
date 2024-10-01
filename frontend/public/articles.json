@@ -94,5 +94,51 @@
       }
     },
     "comments": []
+  },
+  {
+    "id": 3,
+    "title": "Hash Table Explained: Efficient Data Lookup",
+    "description": "Dive into the details of hash tables, a fundamental data structure that provides fast lookups, insertions, and deletions using hash functions, implemented in both C++ and Python.",
+    "category": "Data Structures",
+    "publishDate": "2024-10-01",
+    "programmingLanguages": ["C++", "Python"],
+    "details": {
+      "C++": "In C++, a hash table can be implemented using arrays or vectors, with hash functions to map values to indices. Collision resolution techniques such as chaining or open addressing are commonly used. This implementation uses chaining with vectors to handle collisions.",
+      "Python": "In Python, hash tables are abstracted by dictionaries. They are dynamic and provide average O(1) complexity for lookups, insertions, and deletions using built-in hash functions."
+    },
+    "descriptions": {
+      "C++": {
+        "constructor": "This is the constructor for the HashTable class. It initializes a hash table with a specified size and sets up the table as a vector of vectors, allowing for collision handling with separate chaining.",
+        "destructor": "This is the destructor for the HashTable class. It ensures that all dynamically allocated memory is properly freed when the hash table is no longer in use. The C++ vector automatically handles memory deallocation, so no explicit memory cleanup is needed.",
+        "insert": "The insert method adds a value to the hash table by computing the hash value (using modulo division by the size of the table) and storing it in the appropriate bucket. If the bucket is full due to collisions, insertion fails.",
+        "lookup": "The lookup method checks whether a given value exists in the hash table by computing its hash and searching through the list of elements in the corresponding bucket.",
+        "main": "This main function demonstrates how to initialize the hash table, insert values, and check for the presence of values using the lookup function."
+      },
+      "Python": {
+        "constructor": "This is the constructor for a hash table in Python. In Python, hash tables are implemented using dictionaries, so the constructor simply initializes an empty dictionary.",
+        "insert": "The insert method adds a key-value pair to the dictionary, where the key is hashed automatically by Python's internal hash function. No manual collision handling is needed.",
+        "lookup": "The lookup method checks for the existence of a key in the dictionary using Python's built-in `in` keyword. If the key exists, it retrieves the associated value.",
+        "main": "This main function shows how to create a hash table using Python's dictionary, insert key-value pairs, and perform lookups efficiently."
+      }
+    },
+    "codeSnippets": {
+      "C++": {
+        "constructor": "",
+        "destructor": "",
+        "insert": "",
+        "lookup": "",
+        "delete": "",
+        "main": ""
+      },
+      "Python": {
+        "constructor": "",
+        "destructor": "",
+        "insert": "",
+        "lookup": "",
+        "delete": "",
+        "main": ""
+      }
+    },
+    "comments": []
   }
 ]
