@@ -1,18 +1,23 @@
 /* Navbar.css */
+.navbar{
+  padding: 4px;
+}
 
 /* Transparent background for when the user is at the top */
 .transparent-bg {
-  background-color: rgba(255, 255, 255, 0.95); /* Light color with 30% opacity */
-  transition: background-color 0.3s ease-in-out; /* Smooth transition between states */
+  background-color: rgba(255, 255, 255, 0.95);
+  /* Light color with 30% opacity */
+  transition: background-color 0.3s ease-in-out;
+  /* Smooth transition between states */
 }
 
 /* Navbar link styles */
 .animated-link {
-    position: relative;
-    color: #000 !important;
-    font-size: 1rem;
+  position: relative;
+  color: #000 !important;
+  font-size: 1rem;
 }
-  
+
 .animated-link::after {
   content: "";
   position: absolute;
@@ -25,17 +30,35 @@
   transform-origin: bottom left;
   transition: transform 0.3s ease-out;
 }
-  
+
 .animated-link:hover::after {
   transform: scaleX(1);
 }
 
 /* Logo color */
 .logo {
-  color: #41464b !important;
+  width: 50px;
+  border-radius: 25%;
+  background-color: initial;
 }
 
-.navbar-nav{
+/* Example of animating the background color on hover */
+@keyframes changeBackgroundColor {
+  from {
+    background-color: initial;
+  }
+
+  to {
+    background-color: #41464b;
+  }
+}
+
+.logo:hover {
+  animation: changeBackgroundColor 0.3s ease-in forwards;
+  /* Duration, easing, and fill-mode */
+}
+
+.navbar-nav {
   gap: 1em;
 }
 
