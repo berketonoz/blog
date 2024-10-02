@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import LogoImg from "../../assets/logo.png"
+import "./Navbar.css";
 
 function NavbarPanel() {
   const [navbarBg, setNavbarBg] = useState(false);
@@ -34,8 +35,10 @@ function NavbarPanel() {
       variant={navbarBg ? "light" : "dark"} // Switch between light and dark variants
     >
       <Container>
-        <Navbar.Brand className="logo">
-          <Link to="/">Tony</Link>
+        <Navbar.Brand>
+          <Link to="/">
+            <img src={LogoImg} alt="Logo" className="logo"/>
+          </Link>
         </Navbar.Brand>
         <Nav>
           <Link to="/" className="animated-link">
