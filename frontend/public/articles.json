@@ -34,7 +34,7 @@
         "push": "template <typename T>\nvoid Stack<T>::push(T value)\n{\n    Node<T> *new_head = new Node<T>(value);\n    new_head->prev = this->head;\n    this->head = new_head;\n    this->size++;\n}",
         "pop": "template <typename T>\nT Stack<T>::pop()\n{\n    if (this->isEmpty()) throw std::out_of_range(\"Stack is empty\");\n    T value = this->head->value;\n    Node<T> *old_head = this->head;\n    this->head = old_head->prev;\n    delete old_head;\n    this->size--;\n    return value;\n}",
         "isEmpty": "template <typename T>\nbool Stack<T>::isEmpty()\n{\n    return this->head == nullptr;\n}",
-        "main": "#include <iostream>\n#include <string>\n#include <vector>\n#include 'Stack.h'\n\nusing namespace std;\n\nint main(){\n    Stack<string> stack = Stack<string>();\n    vector<string> sampleVec = {\"This\",\"is\",\"a\",\"sample\",\"vector\"};\n    cout << stack.isEmpty() << endl;\n    for (int i = 0; i < sampleVec.size(); i++)\n{\n        cout << \"Push: \" << sampleVec[i] << endl;\n        stack.push(sampleVec[i]);\n}"
+        "main": "#include <iostream>\n#include <string>\n#include <vector>\n#include 'Stack.h'\n\nusing namespace std;\n\nint main()\n{\n    Stack<string> stack = Stack<string>();\n    vector<string> sampleVec = {\"This\",\"is\",\"a\",\"sample\",\"vector\"};\n    cout << stack.isEmpty() << endl;\n    for (int i = 0; i < sampleVec.size(); i++)\n{\n        cout << \"Push: \" << sampleVec[i] << endl;\n        stack.push(sampleVec[i]);\n}"
       },
       "Python": {
         "constructor": "class Stack:\n    def __init__(self):\n        self.items = []",
@@ -123,20 +123,20 @@
     },
     "codeSnippets": {
       "C++": {
-        "constructor": "",
-        "destructor": "",
-        "insert": "",
-        "lookup": "",
-        "delete": "",
-        "main": ""
+        "constructor": "HashTable(int size) : size(size)\n    {\n        table.resize(size);\n    }",
+        "destructor": "// Destructor (not strictly needed due to vector auto clean-up, but defined for good practice)\nHashTable::~HashTable()\n{\n    // Vector's destructor will handle the cleanup automatically, so nothing to do here\n\n}",
+        "insert": "bool insert(const T &value)\n    {\n        if(this->lookup(value))\n            return false;\n        int bucket = std::hash<T>{}(value) % size;\n        table[bucket].push_back(value);\n        return true;\n    }",
+        "lookup": "bool lookup(const T &value)\n    {\n        int bucket = std::hash<T>{}(value) % size;\n        for (auto &elem : table[bucket])\n        {\n            if (elem == value)\n            {\n                return true;\n            }\n        }\n        return false;\n    }",
+        "delete": "void deleteHash(const T &value)\n    {\n        int bucket = std::hash<T>{}(value) % size;\n        table[bucket].remove(value);\n    }",
+        "main": "#include \"HashTable.h\"\n#include <iostream>\n#include <string>\n\nint main()\n{\n    // Create a hash table with a certain size\n    HashTable<int> ht(10);\n\n    // Test inserting elements\n    std::cout << \"Inserting elements into the hash table...\" << std::endl;\n    ht.insert(1);\n    ht.insert(2);\n    ht.insert(3);\n    ht.insert(10);  // This will collide with 1 if hash function is modulo size\n\n    // Test lookup\n    std::cout << \"Looking up elements...\" << std::endl;\n    std::cout << \"Element 2 found: \" << (ht.lookup(2) ? \"Yes\" : \"No\") << std::endl;\n    std::cout << \"Element 5 found: \" << (ht.lookup(5) ? \"Yes\" : \"No\") << std::endl;\n\n    // Test deletion\n    std::cout << \"Deleting element 2...\" << std::endl;\n    ht.deleteHash(2);\n    std::cout << \"Element 2 found after deletion: \" << (ht.lookup(2) ? \"Yes\" : \"No\") << std::endl;\n\n    // Re-insert and test\n    std::cout << \"Re-inserting element 2...\" << std::endl;\n    ht.insert(2);\n    std::cout << \"Element 2 found after re-inserting: \" << (ht.lookup(2) ? \"Yes\" : \"No\") << std::endl;\n\n    return 0;\n}"
       },
       "Python": {
-        "constructor": "",
-        "destructor": "",
-        "insert": "",
-        "lookup": "",
-        "delete": "",
-        "main": ""
+        "constructor": "def __init__(self, size):\n    self.size = size\n    self.table = {}",
+        "destructor": "def __del__(self):\n    print(f\"HashTable with size {self.size} is being deleted\")\n    # Any other cleanup operations can be added here",
+        "insert": "def insert(self, value):\n    bucket = hash(value) % self.size\n    if bucket in self.table:\n        if value in self.table[bucket]:\n            return False\n        self.table[bucket].append(value)\n    else:\n        self.table[bucket] = [value]\n    return True",
+        "lookup": "def lookup(self, value):\n    bucket = hash(value) % self.size\n    return bucket in self.table and value in self.table[bucket]",
+        "delete": "def delete(self, value):\n    bucket = hash(value) % self.size\n    if bucket in self.table and value in self.table[bucket]:\n        self.table[bucket].remove(value)\n        if not self.table[bucket]:  # if the bucket is empty after removal, you might want to clean up\n            del self.table[bucket]",
+        "main": "def main():\n    # Create a hash table with a certain size\n    ht = HashTable(10)\n\n        # Test inserting elements\n    print(\"Inserting elements into the hash table...\")\n    ht.insert(1)\n    ht.insert(2)\n    ht.insert(3)\n    ht.insert(10)  # This will collide with 1 if hash function is modulo size\n\n    # Test lookup\n    print(\"Looking up elements...\")\n    print(f\"Element 2 found: {'Yes' if ht.lookup(2) else 'No'}\")\n    print(f\"Element 5 found: {'Yes' if ht.lookup(5) else 'No'}\")\n\n    # Test deletion\n    print(\"Deleting element 2...\")\n    ht.delete(2)\n    print(f\"Element 2 found after deletion: {'Yes' if ht.lookup(2) else 'No'}\")\n\n    # Re-insert and test\n    print(\"Re-inserting element 2...\")\n    ht.insert(2)\n    print(f\"Element 2 found after re-inserting: {'Yes' if ht.lookup(2) else 'No'}\")\n\nif __name__ == \"__main__\":\n    main()"
       }
     },
     "comments": []
