@@ -123,11 +123,11 @@
     },
     "codeSnippets": {
       "C++": {
-        "constructor": "HashTable(int size) : size(size)\n    {\n        table.resize(size);\n    }",
-        "destructor": "// Destructor (not strictly needed due to vector auto clean-up, but defined for good practice)\nHashTable::~HashTable()\n{\n    // Vector's destructor will handle the cleanup automatically, so nothing to do here\n\n}",
-        "insert": "bool insert(const T &value)\n    {\n        if(this->lookup(value))\n            return false;\n        int bucket = std::hash<T>{}(value) % size;\n        table[bucket].push_back(value);\n        return true;\n    }",
-        "lookup": "bool lookup(const T &value)\n    {\n        int bucket = std::hash<T>{}(value) % size;\n        for (auto &elem : table[bucket])\n        {\n            if (elem == value)\n            {\n                return true;\n            }\n        }\n        return false;\n    }",
-        "delete": "void deleteHash(const T &value)\n    {\n        int bucket = std::hash<T>{}(value) % size;\n        table[bucket].remove(value);\n    }",
+        "constructor": "HashTable(int size) : size(size)\n{\n    table.resize(size);\n}",
+        "destructor": "// Destructor (not strictly needed due to vector auto clean-up, but defined for good practice)\nHashTable::~HashTable()\n{\n    // Vector's destructor will handle the cleanup automatically, so nothing to do here\n}",
+        "insert": "bool insert(const T &value)\n{\n    if(this->lookup(value))\n        return false;\n    int bucket = std::hash<T>{}(value) % size;\n    table[bucket].push_back(value);\n    return true;\n}",
+        "lookup": "bool lookup(const T &value)\n{\n    int bucket = std::hash<T>{}(value) % size;\n    for (auto &elem : table[bucket])\n    {\n        if (elem == value)\n        {\n            return true;\n        }\n    }\n    return false;\n}",
+        "delete": "void deleteHash(const T &value)\n{\n    int bucket = std::hash<T>{}(value) % size;\n    table[bucket].remove(value);\n}",
         "main": "#include \"HashTable.h\"\n#include <iostream>\n#include <string>\n\nint main()\n{\n    // Create a hash table with a certain size\n    HashTable<int> ht(10);\n\n    // Test inserting elements\n    std::cout << \"Inserting elements into the hash table...\" << std::endl;\n    ht.insert(1);\n    ht.insert(2);\n    ht.insert(3);\n    ht.insert(10);  // This will collide with 1 if hash function is modulo size\n\n    // Test lookup\n    std::cout << \"Looking up elements...\" << std::endl;\n    std::cout << \"Element 2 found: \" << (ht.lookup(2) ? \"Yes\" : \"No\") << std::endl;\n    std::cout << \"Element 5 found: \" << (ht.lookup(5) ? \"Yes\" : \"No\") << std::endl;\n\n    // Test deletion\n    std::cout << \"Deleting element 2...\" << std::endl;\n    ht.deleteHash(2);\n    std::cout << \"Element 2 found after deletion: \" << (ht.lookup(2) ? \"Yes\" : \"No\") << std::endl;\n\n    // Re-insert and test\n    std::cout << \"Re-inserting element 2...\" << std::endl;\n    ht.insert(2);\n    std::cout << \"Element 2 found after re-inserting: \" << (ht.lookup(2) ? \"Yes\" : \"No\") << std::endl;\n\n    return 0;\n}"
       },
       "Python": {
