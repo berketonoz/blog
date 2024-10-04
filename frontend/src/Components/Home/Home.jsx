@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
 import "./Home.css";
 import HomeBg from "../../assets/home-background.jpg";
-import Articles from "../Articles/Articles";
+import Tutorials from "../Articles/Tutorials";
 
 function Home() {
   const text = "Welcome to Tony's Tech Blog";
-  const articlesRef = useRef(null);
+  const tutorialsRef = useRef(null);
 
-  const scrollToArticles = () => {
-    articlesRef.current.scrollIntoView({ behavior: "smooth" });
+  const scrollToTutorials = () => {
+    tutorialsRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -24,12 +24,12 @@ function Home() {
               ))}
             </div>
             <div className="dots"></div>
-            <button className="cta-button" onClick={scrollToArticles}>Explore Data Structures</button>
+            <button className="cta-button" onClick={scrollToTutorials}>Explore Data Structures</button>
           </div>
         </div>
       </div>
-      <div ref={articlesRef} className="articles-section">
-        <Articles />
+      <div ref={tutorialsRef} className="tutorials-section">
+        <Tutorials />
       </div>
     </>
   );

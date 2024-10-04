@@ -1,4 +1,4 @@
-.article-container {
+.tutorial-container {
   width: 97%;         /* Full width on smaller screens */
   margin: 20px;     /* Margin top */
   padding: 20px;
@@ -10,31 +10,31 @@
   color: #242424;
 }
 
-/* Ensure the article list is a flex container for better responsiveness */
-.article-list {
+/* Ensure the tutorial list is a flex container for better responsiveness */
+.tutorial-list {
   list-style-type: none; /* Remove default list styling */
   padding: 0;           /* Remove default padding */
 }
 
-/* Article item styling */
-.article-item {
-  margin: 20px 0;      /* Vertical spacing between articles */
+/* tutorial item styling */
+.tutorial-item {
+  margin: 20px 0;      /* Vertical spacing between tutorials */
   padding: 15px;       /* Internal padding */
-  border: 1px solid #ddd; /* Border around each article */
+  border: 1px solid #ddd; /* Border around each tutorial */
   border-radius: 5px;  /* Rounded corners */
-  background-color: #fff; /* White background for articles */
+  background-color: #fff; /* White background for tutorials */
   transition: box-shadow 0.3s; /* Smooth hover effect */
 }
 
-/* Article jeader detail styling */
-.article-detail-header {
+/* tutorial jeader detail styling */
+.tutorial-detail-header {
   display: flex;
   flex-direction: row; /* Stack details vertically */
   gap: 2rem;
 }
 
 /* Hover effect */
-.article-item:hover {
+.tutorial-item:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow on hover */
 }
 
@@ -86,16 +86,16 @@
 
 /* Responsive design for smaller screens */
 @media (max-width: 768px) {
-  .article-container {
+  .tutorial-container {
     padding: 10px; /* Reduce padding for smaller screens */
   }
 
-  .article-item {
-    margin: 15px 0; /* Reduce margin between articles */
+  .tutorial-item {
+    margin: 15px 0; /* Reduce margin between tutorials */
     padding: 10px; /* Reduce internal padding */
   }
 
-  .article-detail-header {
+  .tutorial-detail-header {
     /*flex-direction: column; /* Stack details vertically */
     /*align-items: flex-start; /* Align items to the start */
   }
@@ -124,7 +124,7 @@
 
 /* Further adjustments for mobile devices */
 @media (max-width: 480px) {
-  .article-detail-header {
+  .tutorial-detail-header {
     flex-direction: column; /* Stack details vertically */
     gap: 5px;
   }
