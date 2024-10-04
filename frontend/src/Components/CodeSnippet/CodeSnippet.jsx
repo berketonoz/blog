@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { prism } from "react-syntax-highlighter/dist/esm/styles/prism"; // You can choose any style you prefer
 import "./CodeSnippet.css"; // Optional: CSS file for styling
 
 const CodeSnippet = ({ code }) => {
@@ -47,7 +46,7 @@ const CodeSnippet = ({ code }) => {
           </div>
         )}
       </div>
-      <SyntaxHighlighter language="cpp" style={prism}>
+      <SyntaxHighlighter language="cpp" customStyle={{backgroundColor: "inherit"}} showLineNumbers >
         {code}
       </SyntaxHighlighter>
     </div>
