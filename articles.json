@@ -97,7 +97,7 @@
   },
   {
     "id": 3,
-    "title": "Understanding Queues: FIFO Data Structures in C++ and Python",
+    "title": "Hash Table Explained: Efficient Data Lookup",
     "description": "Dive into the details of hash tables, a fundamental data structure that provides fast lookups, insertions, and deletions using hash functions, implemented in both C++ and Python.",
     "category": "Data Structures",
     "publishDate": "2024-10-01",
@@ -143,7 +143,7 @@
   },
   {
     "id": 4,
-    "title": "Queue Data Structure Explained",
+    "title": "Queue Explained: Daily Life's Data Structure",
     "description": "Unpack the essentials of the Queue data structure in this detailed exploration of its implementations in C++ and Python. Learn how this straightforward, FIFO-based system efficiently manages data flows in various applications.",
     "category": "Data Structures",
     "publishDate": "2024-10-02",
