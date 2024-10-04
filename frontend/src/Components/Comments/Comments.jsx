@@ -53,6 +53,8 @@ const CommentForm = ({ comments }) => {
     setComment("");
   };
 
+  const isLoggedIn = sessionStorage.getItem("username") !== null;
+
   return (
     <div className="comments-container">
       <div className="mt-3">
