@@ -3,33 +3,33 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { faCalendar, faComment } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./Articles.css"; // Import the external CSS file
+import "./Tutorials.css"; // Import the external CSS file
 
-// Articles Component
-const Articles = () => {
-  const [articles, setArticles] = useState([]);
+// tutorials Component
+const Tutorials = () => {
+  const [tutorials, setTutorials] = useState([]);
   const navigate = useNavigate();
-  const url = 'https://raw.githubusercontent.com/berketonoz/blog/refs/heads/dev/frontend/public/articles.json';
+  const url = 'https://raw.githubusercontent.com/berketonoz/blog/refs/heads/dev/frontend/public/tutorials.json';
 
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
-      .then((data) => setArticles(data))
+      .then((data) => setTutorials(data))
       .catch((err) => console.log(err));
   }, []);
 
   return (
-    <div className="article-container">
-      <h1 className="article-header">Data Structures</h1>
-      <ul className="article-list">
-        {articles.map((article) => (
-          <li key={article.id} className="article-item">
-            <h2 className="title" onClick={() => navigate(`/article/${article.id}`)}>{article.title}</h2>
-            <div className="article-detail-header">
+    <div className="tutorial-container">
+      <h1 className="tutorial-header">Data Structures</h1>
+      <ul className="tutorial-list">
+        {tutorials.map((tutorial) => (
+          <li key={tutorial.id} className="tutorial-item">
+            <h2 className="title" onClick={() => navigate(`/tutorial/${tutorial.id}`)}>{tutorial.title}</h2>
+            <div className="tutorial-detail-header">
               <p className="info">
                 <strong>Programming Languages:</strong>
                 <span className="info-item">
-                  {article.programmingLanguages.map((language, index) => (
+                  {tutorial.programmingLanguages.map((language, index) => (
                     <span key={index} className="item-badge">
                       {language}
                     </span>
@@ -39,21 +39,21 @@ const Articles = () => {
               <p className="info">
                 <strong>Category:</strong>
                 <span className="info-item">
-                  <span className="item-badge">{article.category}</span>
+                  <span className="item-badge">{tutorial.category}</span>
                 </span>
               </p>
               <p className="info">
-                <FontAwesomeIcon icon={faCalendar} /> {article.publishDate}
+                <FontAwesomeIcon icon={faCalendar} /> {tutorial.publishDate}
               </p>
               <p className="info">
-                <FontAwesomeIcon icon={faComment} /> {article.comments.length}
+                <FontAwesomeIcon icon={faComment} /> {tutorial.comments.length}
               </p>
             </div>
-            <p className="description">{article.description}</p>
+            <p className="description">{tutorial.description}</p>
             <div className="button-container">
               <Button
                 variant="primary"
-                onClick={() => navigate(`/article/${article.id}`)}
+                onClick={() => navigate(`/tutorial/${tutorial.id}`)}
               >
                 Continue Reading
               </Button>
@@ -65,4 +65,4 @@ const Articles = () => {
   );
 };
 
-export default Articles;
+export default Tutorials;
