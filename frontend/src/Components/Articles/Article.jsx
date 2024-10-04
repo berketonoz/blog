@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Tabs, Tab } from "react-bootstrap";
 import CodeSnippet from "../CodeSnippet/CodeSnippet";
-import "./Article.css"; // Using the same CSS for shared styles
 import CommentForm from "../Comments/Comments";
-import { useState } from "react";
+import "./Article.css"; // Using the same CSS for shared styles
 
 const Article = () => {
   const [article, setArticle] = useState({});
@@ -32,7 +31,7 @@ const Article = () => {
   return (
     <>
       <div className="article-wrapper">
-        <h2 className="article-title">{article.title}</h2>
+        <strong><h2 className="article-title">{article.title}</h2></strong>
         <div className="article-category">{article.category}</div>
         <div className="article-publish-date">{article.publishDate}</div>
         <div className="article-languages">Programming Languages:</div>
