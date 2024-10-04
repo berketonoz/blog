@@ -97,7 +97,7 @@
   },
   {
     "id": 3,
-    "title": "Hash Table Explained: Efficient Data Lookup",
+    "title": "Understanding Queues: FIFO Data Structures in C++ and Python",
     "description": "Dive into the details of hash tables, a fundamental data structure that provides fast lookups, insertions, and deletions using hash functions, implemented in both C++ and Python.",
     "category": "Data Structures",
     "publishDate": "2024-10-01",
@@ -137,6 +137,55 @@
         "lookup": "def lookup(self, value):\n    bucket = hash(value) % self.size\n    return bucket in self.table and value in self.table[bucket]",
         "delete": "def delete(self, value):\n    bucket = hash(value) % self.size\n    if bucket in self.table and value in self.table[bucket]:\n        self.table[bucket].remove(value)\n        if not self.table[bucket]:  # if the bucket is empty after removal, you might want to clean up\n            del self.table[bucket]",
         "main": "def main():\n    # Create a hash table with a certain size\n    ht = HashTable(10)\n\n        # Test inserting elements\n    print(\"Inserting elements into the hash table...\")\n    ht.insert(1)\n    ht.insert(2)\n    ht.insert(3)\n    ht.insert(10)  # This will collide with 1 if hash function is modulo size\n\n    # Test lookup\n    print(\"Looking up elements...\")\n    print(f\"Element 2 found: {'Yes' if ht.lookup(2) else 'No'}\")\n    print(f\"Element 5 found: {'Yes' if ht.lookup(5) else 'No'}\")\n\n    # Test deletion\n    print(\"Deleting element 2...\")\n    ht.delete(2)\n    print(f\"Element 2 found after deletion: {'Yes' if ht.lookup(2) else 'No'}\")\n\n    # Re-insert and test\n    print(\"Re-inserting element 2...\")\n    ht.insert(2)\n    print(f\"Element 2 found after re-inserting: {'Yes' if ht.lookup(2) else 'No'}\")\n\nif __name__ == \"__main__\":\n    main()"
+      }
+    },
+    "comments": []
+  },
+  {
+    "id": 4,
+    "title": "Queue Data Structure Explained",
+    "description": "Unpack the essentials of the Queue data structure in this detailed exploration of its implementations in C++ and Python. Learn how this straightforward, FIFO-based system efficiently manages data flows in various applications.",
+    "category": "Data Structures",
+    "publishDate": "2024-10-02",
+    "programmingLanguages": ["C++", "Python"],
+    "details": {
+      "C++": "The C++ implementation of the Queue uses dynamic memory management to ensure efficient data handling. The queue supports basic operations such as enqueue, dequeue, and peek, following the FIFO principle.",
+      "Python": "The Python version of the Queue is implemented using native list operations that provide simple and direct methods to manage the queue's FIFO functionality."
+    },
+    "descriptions": {
+      "C++": {
+        "constructor": "Initializes a new empty queue with allocated memory.",
+        "destructor": "Frees up the memory used by the queue when it is destroyed.",
+        "enqueue": "Adds an item to the end of the queue.",
+        "dequeue": "Removes the item at the front of the queue.",
+        "peek": "Returns the item at the front of the queue without removing it.",
+        "isEmpty": "Checks if the queue is empty."
+      },
+      "Python": {
+        "constructor": "Creates an empty queue using a Python list.",
+        "enqueue": "Appends an item to the end of the list, acting as the queue's rear.",
+        "dequeue": "Pops the first item of the list, representing the front of the queue.",
+        "peek": "Accesses the first item of the list without removing it, showing the next item to be dequeued.",
+        "isEmpty": "Returns True if the list (queue) is empty, otherwise False."
+      }
+    },
+    "codeSnippets": {
+      "C++": {
+        "constructor": "template <typename T>\nstruct Node\n{\n    T data;\n    Node<T> *next;\n\n    Node<T>(T data) : data(data), next(nullptr) {}\n};\n\ntemplate <typename T>\nQueue<T>::Queue()\n{\n    this->front = nullptr;\n    this->rear = nullptr;\n}",
+        "destructor": "template <typename T>\nQueue<T>::~Queue()\n{\n    while (this->front != nullptr)\n    {\n        this->dequeue();\n    }\n}",
+        "enqueue": "template <typename T>\nvoid Queue<T>::enqueue(T value)\n{\n    Node<T> *newNode = new Node<T>(value);\n    if (this->isEmpty())\n    {\n        this->front = this->rear = newNode;\n    }\n    else\n    {\n        this->rear->next = newNode;\n        this->rear = newNode;\n    }\n}",
+        "dequeue": "template <typename T>\nvoid Queue<T>::dequeue()\n{\n    if (!this->isEmpty())\n    {\n        Node<T> *temp = this->front;\n        this->front = this->front->next;\n        if (this->front == nullptr)\n        {\n            this->rear = nullptr;\n        }\n        delete temp;\n    }\n}",
+        "peek": "template <typename T>\nT Queue<T>::peek()\n{\n    return (!this->isEmpty()) ? this->front->data : -1;\n}",
+        "isEmpty": "template <typename T>\nbool Queue<T>::isEmpty()\n{\n    return this->front == nullptr;\n}",
+        "main": "#include <iostream>\n#include \"Queue.h\"\n\nint main() {\nQueue<int> *q = new Queue<int>();  // Create a queue for integers\n\n    std::cout << \"Enqueuing elements{1,2,3,4}...\" << std::endl;\n    q->enqueue(1);\n    q->enqueue(2);\n    q->enqueue(3);\n\n    std::cout << \"Current front element: \" << q->peek() << std::endl;  // Should print 1\n\n    std::cout << \"Dequeuing...\" << std::endl;\n    q->dequeue();\n    std::cout << \"New front element after one dequeue: \" << q->peek() << std::endl;  // Should print 2\n\n    std::cout << \"Checking if queue is empty: \" << (q->isEmpty() ? \"Yes\" : \"No\") << std::endl;  // Should print No\n\n    std::cout << \"Dequeuing remaining elements...\" << std::endl;\n    q->dequeue();\n    q->dequeue();  // Queue should be empty after this\n\n    std::cout << \"Checking if queue is empty after dequeuing all elements: \" << (q->isEmpty() ? \"Yes\" : \"No\") << std::endl;  // Should print Yes\n\n    try {\n        std::cout << \"Attempting to peek into an empty queue: \";\n        std::cout << q->peek() << std::endl;\n    } catch (const std::runtime_error& e) {\n        std::cout << e.what() << std::endl;  // Should catch and print \"Queue is empty\"\n    }\n\n    return 0;\n}"
+      },
+      "Python": {
+        "constructor": "class Queue:\n    def __init__(self, capacity=None):\n        self.capacity = capacity\n        self.q = []",
+        "enqueue": "def enqueue(self, value):\n    if self.capacity is not None and len(self.q) >= self.capacity:\n        raise RuntimeError(\"Queue is full\")\n    self.q.append(value)",
+        "dequeue": "def dequeue(self):\n    if not self.isEmpty():\n        return self.q.pop(0)\n    return \"Queue is empty\"",
+        "peek": "def peek(self):\n    if self.isEmpty():\n        return \"Queue is empty\"\n    return self.q[0]",
+        "isEmpty": "def isEmpty(self):\n    return len(self.q) == 0",
+        "main": "def main():\n    q = Queue()  # Create a queue for integers\n    print(\"Enqueuing elements{1,2,3,4}...\")\n    q.enqueue(1)\n    q.enqueue(2)\n    q.enqueue(3)\n    q.enqueue(4)  # This was not included in your original C++ enqueuing, but added as per the printed message\n\n    print(f\"Current front element: {q.peek()}\")  # Should print 1\n\n    print(\"Dequeuing...\")\n    q.dequeue()\n    print(f\"New front element after one dequeue: {q.peek()}\")  # Should print 2\n\n    print(f\"Checking if queue is empty: {'Yes' if q.isEmpty() else 'No'}\")  # Should print No\n\n    print(\"Dequeuing remaining elements...\")\n    q.dequeue()\n    q.dequeue()\n    q.dequeue()  # Added one more dequeue to empty the queue after adding 4th element\n\n    print(f\"Checking if queue is empty after dequeuing all elements: {'Yes' if q.isEmpty() else 'No'}\")  # Should print Yes\n\n    try:\n        print(\"Attempting to peek into an empty queue: \", end=\"\")\n        print(q.peek())\n    except IndexError as e:\n        print(e)  # Should catch and print \"Queue is empty\"\n\nif __name__ == \"__main__\":\n    main()"
       }
     },
     "comments": []
