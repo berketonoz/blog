@@ -20,11 +20,11 @@ const Articles = () => {
 
   return (
     <div className="article-container">
-      <h1 className="article-header">Articles</h1>
+      <h1 className="article-header">Data Structures</h1>
       <ul className="article-list">
         {articles.map((article) => (
           <li key={article.id} className="article-item">
-            <h2 className="title">{article.title}</h2>
+            <h2 className="title" onClick={() => navigate(`/article/${article.id}`)}>{article.title}</h2>
             <div className="article-detail-header">
               <p className="info">
                 <strong>Programming Languages:</strong>
