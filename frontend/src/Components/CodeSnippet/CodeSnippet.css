@@ -1,10 +1,10 @@
 .code-snippet {
   position: relative;
-  background-color: #e9ecef;
+  background-color: #e9e9e9;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: 10px;
   margin-top: 20px;
+  font-size: 14px;
 }
 
 .copy-icon {
@@ -12,8 +12,8 @@
   padding: 2px 4px;
   border: #212529 1px solid;
   border-radius: 15%;
-  top: 25px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
   color: #495057; /* Bootstrap primary color */
   transition: background-color 0.2s;
@@ -24,8 +24,9 @@
 }
 
 .tooltip {
-  background-color: rgba(0, 0, 0, 0.85); /* Darker background */
+  background-color: #282828d9; /* Darker background */
   color: #fff;
+  margin-top: 5px;
   padding: 5px 10px; /* More padding for better appearance */
   border-radius: 4px;
   position: absolute;
@@ -40,7 +41,6 @@
 }
 
 pre {
-  margin: 0; /* Remove margin from <pre> */
   white-space: pre-wrap; /* Allow line breaks */
   word-wrap: break-word; /* Wrap long lines */
 }
