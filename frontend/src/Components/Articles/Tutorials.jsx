@@ -19,7 +19,6 @@ const Tutorials = () => {
         data = data.sort((a, b) => {
           return new Date(b.publishDate) - new Date(a.publishDate);
         });
-        console.log(data);
         setTutorials(data);
       })
       .catch((err) => console.log(err));
