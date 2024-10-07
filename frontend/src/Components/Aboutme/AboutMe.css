@@ -4,6 +4,8 @@
   background-color: #f4f4f4; /* Light gray background */
   padding: 30px;
   border-radius: 10px;
+  margin-top: 40px;
+  height: fit-content;
 }
 
 .about-me-content {

@@ -3,7 +3,7 @@
     background-color: #495057; /* Dark background */
     color: #dee2e6; /* Light text color */
     text-align: center; /* Center align text */
-    padding: 10px; /* Padding around footer */
+    padding: 15px; /* Padding around footer */
     position: relative; /* Ensure it stays at the bottom */
     bottom: 0;
     width: 100%; /* Full width */
@@ -17,7 +17,7 @@
 /* Responsive rules for phone view */
 @media (max-width: 768px) {
     .footer {
-        padding: 15px; /* Reduce padding on smaller screens */
+        padding: 10px; /* Reduce padding on smaller screens */
     }
 
     .footer p {
@@ -27,7 +27,7 @@
 
 @media (max-width: 480px) {
     .footer {
-        padding: 10px; /* Further reduce padding */
+        padding: 7.5px; /* Further reduce padding */
     }
 
     .footer p {
