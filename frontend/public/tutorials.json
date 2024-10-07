@@ -21,6 +21,7 @@
       },
       "Python": {
         "constructor": "This is the constructor for the Stack class in Python. It initializes an empty list that will act as the stack.",
+        "destructor": "Python's garbage collector handles memory management, so an explicit destructor is typically unnecessary and not included in the implementation.",
         "push": "The push method appends a new element to the end of the list, representing the top of the stack.",
         "pop": "The pop method removes and returns the last element of the list. It raises an IndexError if the stack is empty.",
         "isEmpty": "The isEmpty method checks whether the stack is empty by verifying if the list has no elements.",
@@ -38,7 +39,6 @@
       },
       "Python": {
         "constructor": "class Stack:\n    def __init__(self):\n        self.items = []",
-        "destructor": "def __del__(self):\n        print(\"Stack is being deleted\")",
         "push": "def push(self, item):\n    self.items.append(item)",
         "pop": "def pop(self):\n    if not self.isEmpty():\n        return self.items.pop()\n    raise IndexError('pop from empty stack')",
         "isEmpty": "def isEmpty(self):\n    return len(self.items) == 0",
@@ -68,7 +68,7 @@
       },
       "Python": {
         "constructor": "This is the constructor for the LinkedList class in Python. It initializes an empty linked list with the head pointer set to None.",
-        "destructor": "This is the destructor for the LinkedList class in Python. Although Python has automatic garbage collection, this method can be implemented to explicitly free memory if needed.",
+        "destructor": "Python's garbage collector handles memory management, so an explicit destructor is typically unnecessary and not included in the implementation.",
         "insert": "The insert method adds a new node with the specified value at the end of the linked list. It checks if the head is None and updates it accordingly, or traverses to the last node to link the new node.",
         "delete": "The delete method removes the first node that contains the specified value. It handles cases where the node to delete is the head or a node further down the list.",
         "print": "The printList method traverses the linked list and prints each node’s data in sequence, separated by arrows ('->'). It provides a visual representation of the links between nodes.",
@@ -86,7 +86,6 @@
       },
       "Python": {
         "constructor": "class Node:\n    def __init__(self, value) -> None:\n        self.data: int = value  # Store the data value\n        self.next: 'Node' = None  # Initialize the next pointer to None\n\nclass LinkedList:\n    def __init__(self) -> None:\n        self.head: Node = None  # Initialize the head to None, indicating an empty list.",
-        "destructor": "def __del__(self):\n    \"\"\"Destructor to clean up nodes when the list is no longer needed.\"\"\"\n    current = self.head\n    while current:\n        next_node = current.next\n        del current  # Explicitly deleting node\n        current = next_node",
         "insert": "def insert(self, val) -> None:\n        \"\"\"Inserts a new node with the specified value at the end of the list.\"\"\"\n        newNode = Node(val)\n\n        if self.head is None:\n            self.head = newNode\n        else:\n            temp = self.head\n            while temp.next:\n                temp = temp.next\n            temp.next = newNode\n\n        # Inserts a new node with the value `val` at the end of the list.",
         "delete": "def delete(self, val) -> bool:\n        \"\"\"Deletes the first node with the specified value from the list.\n        Returns True if the node was deleted, False if not found.\n        \"\"\"\n        if self.head is None:  # If the list is empty\n            return False\n\n        # Deleting the head node\n        if self.head.data == val:\n            self.head = self.head.next  # Move the head to the next node\n            return True\n\n        # Traverse the list to find the node to delete\n        current = self.head\n        while current.next:  # Ensure we're not accessing null pointers\n            if current.next.data == val:  # Node to delete found\n                current.next = current.next.next  # Bypass the node to delete it\n                return True\n            current = current.next  # Move to the next node\n\n        return False  # Value not found in the list\n\n        # Deletes the first node with the specified value `val`.",
         "print": "def printList(self):\n        temp = self.head\n        while temp:\n            print(temp.data,end=\"\")\n            if temp.next:\n                print(\" -> \",end=\"\")\n            temp = temp.next\n        print()\n\n        # Prints the linked list by traversing from head to the last node.",
@@ -116,6 +115,7 @@
       },
       "Python": {
         "constructor": "This is the constructor for a hash table in Python. In Python, hash tables are implemented using dictionaries, so the constructor simply initializes an empty dictionary.",
+        "destructor": "Python's garbage collector handles memory management, so an explicit destructor is typically unnecessary and not included in the implementation.",
         "insert": "The insert method adds a key-value pair to the dictionary, where the key is hashed automatically by Python's internal hash function. No manual collision handling is needed.",
         "lookup": "The lookup method checks for the existence of a key in the dictionary using Python's built-in `in` keyword. If the key exists, it retrieves the associated value.",
         "main": "This main function shows how to create a hash table using Python's dictionary, insert key-value pairs, and perform lookups efficiently."
@@ -132,7 +132,6 @@
       },
       "Python": {
         "constructor": "def __init__(self, size):\n    self.size = size\n    self.table = {}",
-        "destructor": "def __del__(self):\n    print(f\"HashTable with size {self.size} is being deleted\")\n    # Any other cleanup operations can be added here",
         "insert": "def insert(self, value):\n    bucket = hash(value) % self.size\n    if bucket in self.table:\n        if value in self.table[bucket]:\n            return False\n        self.table[bucket].append(value)\n    else:\n        self.table[bucket] = [value]\n    return True",
         "lookup": "def lookup(self, value):\n    bucket = hash(value) % self.size\n    return bucket in self.table and value in self.table[bucket]",
         "delete": "def delete(self, value):\n    bucket = hash(value) % self.size\n    if bucket in self.table and value in self.table[bucket]:\n        self.table[bucket].remove(value)\n        if not self.table[bucket]:  # if the bucket is empty after removal, you might want to clean up\n            del self.table[bucket]",
@@ -163,6 +162,7 @@
       },
       "Python": {
         "constructor": "Creates an empty queue using a Python list.",
+        "destructor": "Python's garbage collector handles memory management, so an explicit destructor is typically unnecessary and not included in the implementation.",
         "enqueue": "Appends an item to the end of the list, acting as the queue's rear.",
         "dequeue": "Pops the first item of the list, representing the front of the queue.",
         "peek": "Accesses the first item of the list without removing it, showing the next item to be dequeued.",
@@ -189,5 +189,52 @@
       }
     },
     "comments": []
+  },
+  {
+    "id": 5,
+    "title": "Binary Tree Explained: Here Comes The Advanced Stuff ",
+    "description": "Unpack the essentials of a Binary Tree data structure in this detailed exploration of its implementations in C++ and Python. Learn how this iterative, tree-like system efficiently manages insert, search and delete operations.",
+    "category": "Data Structures",
+    "publishDate": "2024-10-07",
+    "programmingLanguages": ["C++", "Python"],
+    "details": {
+    "C++": "The C++ implementation of the Binary Tree uses dynamic memory management to ensure efficient data handling. The tree supports basic operations such as insert, delete, and search.",
+    "Python": "The Python implementation of the Binary Tree supports basic operations like insert, delete, and search, leveraging Python's dynamic typing and automatic memory management."
+    },
+    "descriptions": {
+    "C++": {
+      "constructor": "Initializes an empty binary tree. The constructor sets the root pointer to 'nullptr', indicating that the tree starts empty.",
+      "destructor": "Destroys the binary tree by recursively deleting all its nodes, starting from the root. This method ensures all dynamically allocated memory is properly freed.",
+      "insert": "Inserts a new node with a specified value into the binary tree. If the tree is empty, the new node becomes the root. Otherwise, the method finds the correct position for the new node to maintain the binary search properties.",
+      "delete": "Deletes a node with the given value. The tree may undergo reorganization if the deleted node has children, ensuring that the binary search property is maintained.",
+      "search": "Searches for a node with a specific value. Starts from the root and navigates through the tree. Returns the node if found or 'nullptr' if the node is not in the tree."
+    },
+    "Python": {
+      "constructor": "Creates an instance of a binary tree with the root set to 'None', ready to have nodes inserted into it.",
+      "destructor": "Python's garbage collector handles memory management, so an explicit destructor is typically unnecessary and not included in the implementation.",
+      "insert": "Inserts a new node in the binary tree. If the tree is empty, the new node becomes the root. Otherwise, it traverses the tree to find the correct place to insert the new node, maintaining the tree's order.",
+      "delete": "Deletes a node by its value. If the node is the root, it resets the root after moving the children. Otherwise, it detaches the node from its parent and re-inserts its children into the tree correctly.",
+      "search": "Searches for a node by value and returns the node if it's found, otherwise returns 'None'. The function traverses the tree, moving left or right based on comparisons with node values."
+    }
+  },
+    "codeSnippets": {
+      "C++": {
+        "constructor": "template <typename T>\nstruct Node\n{\n    T data;\n    Node *right;\n    Node *left;\n    Node *parent;\n\n    Node(T data, Node *parent = nullptr) : right(nullptr), left(nullptr), data(data), parent(parent) {}\n};template <typename T>\nBinaryTree<T>::BinaryTree(/* args */)\n{\n    this->root = nullptr;\n}",
+        "destructor": "template <typename T>\nvoid BinaryTree<T>::destroyTree(Node<T> *node)\n{\n    if (node)\n    {\n        destroyTree(node->left);\n        destroyTree(node->right);\n        delete node;\n    }\n}\n\n    template <typename T>\nBinaryTree<T>::~BinaryTree()\n{\n    this->destroyTree(this->root);\n}",
+        "insert": "template <typename T>\nvoid BinaryTree<T>::insert(T value)\n{\n    if (this->root == nullptr)\n        this->root = new Node<T>(value);\n    else\n    {\n        Node<T> *temp = this->root;\n        while (temp != nullptr)\n        {\n            if (temp->data >= value)\n            {\n                if (temp->left == nullptr)\n                {\n                    temp->left = new Node<T>(value, temp);\n                    temp = temp->left; // to force temp nullptr after creation\n                }\n                temp = temp->left;\n            }\n            else\n            {\n                if (temp->right == nullptr)\n                {\n                    temp->right = new Node<T>(value, temp);\n                    temp = temp->right; // to force temp nullptr after creation\n                }\n                temp = temp->right;\n            }\n        }\n    }\n}",
+        "delete": "template <typename T>\nvoid BinaryTree<T>::insertPreorder(Node<T> *node)\n{\n    if (node)\n    {\n        this->insert(node->data);\n        this->insertPreorder(node->left);\n        this->insertPreorder(node->right);\n    }\n}\n\n  template <typename T>\nvoid BinaryTree<T>::deleteNode(T value)\n{\n    if (!this->root)\n        return;\n    else if (this->root->data == value)\n    {\n        Node<T> *current = this->root;\n        if (this->root->right != nullptr)\n        {\n            this->root = root->right;\n            this->insertPreorder(current->left);\n        }\n        else if (this->root->left != nullptr)\n        {\n            this->root = root->left;\n            this->insertPreorder(current->right);\n        }\n        std::cout << current->data << \" deleted(Root)\" << std::endl;\n        delete current;\n    }\n    else\n    {\n        Node<T> *current = this->search(value);\n        if (current != nullptr)\n        {\n            Node<T> *parent = current->parent;\n            if (current->data > parent->data)\n            {\n                parent->right = nullptr;\n            }\n            else\n            {\n                parent->left = nullptr;\n            }\n            this->insertPreorder(current->right);\n            this->insertPreorder(current->left);\n            std::cout << current->data << \" deleted\" << std::endl;\n            delete current;\n        }\n        else\n        {\n            std::cout << value << \" Not Found\" << std::endl;\n        }\n    }\n}",
+        "search": "template <typename T>\nNode<T> *BinaryTree<T>::search(T value)\n{\n    Node<T> *temp = this->root;\n    bool found = false;\n    bool traversed = false;\n    while (!found && !traversed)\n    {\n        if (temp->data > value)\n            if (temp->left == nullptr)\n                traversed = true;\n            else\n                temp = temp->left;\n        else if (temp->data < value)\n            if (temp->right == nullptr)\n                traversed = true;\n            else\n                temp = temp->right;\n        else\n            found = true;\n    }\n    return found ? temp : nullptr;\n}",
+        "inorder": "template <typename T>\nvoid BinaryTree<T>::inorder(Node<T> *node)\n{\n    if (node)\n    {\n        this->inorder(node->left);\n        std::cout << node->data << \" \";\n        this->inorder(node->right);\n    }\n}\n\n    template <typename T>\nvoid BinaryTree<T>::inorder()\n{\n    std::cout << \"Inorder: \";\n    this->inorder(this->root);\n    std::cout << std::endl;\n}",
+        "main": "#include <iostream>\n#include \"BinaryTree.h\"\n\nint main(){\n    BinaryTree<int> *tree = new BinaryTree<int>();\n    tree->insert(31);\n    tree->insert(13);\n    tree->insert(23);\n    tree->insert(54);\n    tree->insert(72);\n    tree->insert(91);\n\n    tree->inorder();\n    tree->deleteNode(14);\n    tree->inorder();\n    tree->deleteNode(15);\n    tree->inorder();\n    tree->deleteNode(13);\n    tree->inorder();\n    tree->deleteNode(31);\n    tree->inorder();\n    tree->deleteNode(54);\n    tree->inorder();\n    tree->deleteNode(13);\n    tree->inorder();\n    tree->~BinaryTree();\n    std::cout << \"Tree destroyed\" << std::endl;\n\n    return 0;\n}"
+      },
+      "Python": {
+        "constructor": "class Node:\n    def __init__(self,value,parent=None):\n        self.data = value\n        self.left = None\n        self.right = None\n        self.parent = parent\n\n        class BinaryTree:\n    def __init__(self):\n        self.root = None",
+        "insert": "def insert(self,value):\n    if not self.root:\n        self.root = Node(value)\n    else:\n        temp = self.root\n        while temp != None:\n            if temp.data >= value:\n                if not temp.left:\n                    temp.left = Node(value,temp)\n                    temp = temp.left\n                temp = temp.left\n            else:\n                if not temp.right:\n                    temp.right = Node(value,temp)\n                    temp = temp.right\n                temp = temp.right",
+        "delete": "def __insertPreorder__(self,node):\n    if node:\n        self.insert(node.data)\n        self.__insertPreorder__(node.left)\n        self.__insertPreorder__(node.right)\n\ndef delete(self, value):\n    if not self.root:\n        return\n    elif self.root.data == value:\n        current = self.root\n        if self.root.right:\n            self.root = self.root.right\n            self.__insertPreorder__(current.left)\n        elif self.root.left:\n            self.root = self.root.left\n            self.__insertPreorder__(current.right)\n        print(f\"{current.data} deleted(Root)\")\n    else:\n        current = self.search(value)\n        if current:\n            parent = current.parent\n            if current.data > parent.data:\n                parent.right = None\n            else:\n                parent.left = None\n            self.__insertPreorder__(current.right)\n            self.__insertPreorder__(current.left)\n            print(f\"{current.data} deleted\")\n        else:\n            print(f\"{value} Not Found\")",
+        "search": "def search(self,value):\n    temp = self.root\n    found = False\n    traversed = False\n    while not found and not traversed:\n        if temp.data > value:\n            if not temp.left:\n                traversed = True\n            else:\n                temp = temp.left\n        elif temp.data < value:\n            if not temp.right:\n                traversed =True\n            temp = temp.right\n        else:\n            found = True\n\n        return temp if found else None",
+        "inorder": "def __inorder__(self,node):\n    if node.left:\n        self.__inorder__(node.left)\n    print(node.data, end=\" \")\n    if node.right:\n        self.__inorder__(node.right)\n\ndef inorder(self):\n    print(\"Inorder: \",  end=\"\")    self.__inorder__(self.root)    print()",
+        "main": "def main():\n    tree = BinaryTree()\n    tree.insert(31)\n    tree.insert(13)\n    tree.insert(23)\n    tree.insert(54)\n    tree.insert(72)\n    tree.insert(91)\n\n    tree.inorder()\n    tree.delete(14)\n    tree.inorder()\n    tree.delete(15)\n    tree.inorder()\n    tree.delete(13)\n    tree.inorder()\n    tree.delete(31)\n    tree.inorder()\n    tree.delete(54)\n    tree.inorder()\n    tree.delete(13)\n    tree.inorder()\n\nif __name__ == \"__main__\":\n    main()"
+      }
+    }
   }
 ]
