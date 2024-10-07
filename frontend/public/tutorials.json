@@ -235,6 +235,7 @@
         "inorder": "def __inorder__(self,node):\n    if node.left:\n        self.__inorder__(node.left)\n    print(node.data, end=\" \")\n    if node.right:\n        self.__inorder__(node.right)\n\ndef inorder(self):\n    print(\"Inorder: \",  end=\"\")    self.__inorder__(self.root)    print()",
         "main": "def main():\n    tree = BinaryTree()\n    tree.insert(31)\n    tree.insert(13)\n    tree.insert(23)\n    tree.insert(54)\n    tree.insert(72)\n    tree.insert(91)\n\n    tree.inorder()\n    tree.delete(14)\n    tree.inorder()\n    tree.delete(15)\n    tree.inorder()\n    tree.delete(13)\n    tree.inorder()\n    tree.delete(31)\n    tree.inorder()\n    tree.delete(54)\n    tree.inorder()\n    tree.delete(13)\n    tree.inorder()\n\nif __name__ == \"__main__\":\n    main()"
       }
-    }
+    },
+    "comments": []
   }
 ]
