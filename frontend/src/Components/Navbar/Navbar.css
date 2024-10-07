@@ -16,7 +16,7 @@
 /* Navbar link styles */
 .animated-link {
   position: relative;
-  color: #000 !important;
+  color: #f9f9f9 !important;
   font-size: 1rem;
 }
 
@@ -67,4 +67,19 @@
 /* Navbar link color */
 .link {
   color: #41464b !important;
+}
+
+.navbar-toggler{
+  width: auto;
+  padding-block: 2px;
+}
+
+.navbar-toggler-icon{
+  width: 20px;
+}
+
+@media (min-width: 768px) {
+  .navbar-expand-md .navbar-collapse {
+      justify-content: end;
+  }
 }
