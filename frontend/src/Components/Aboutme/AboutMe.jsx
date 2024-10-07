@@ -13,7 +13,7 @@ function AboutMe() {
           <img src={UserImg} alt="Profile" className="profile-image" />
         </div>
         <div className="bio-content">
-          <h2>About Me</h2>
+          <h2 style={{textAlign: "center"}}>About Me</h2>
           <p>
             Hi, I'm Tony! I'm a medior full stack developer and a BW consultant
             with a degree in Computer Science and Engineering. I am passionate
@@ -34,7 +34,7 @@ function AboutMe() {
         </div>
       </div>
       <div className="skills-container">
-        <h3>Skills</h3>
+        <h2>Skills</h2>
         <ul className="skills-list">
           <li>SQL</li>
           <li>MongoDB</li>

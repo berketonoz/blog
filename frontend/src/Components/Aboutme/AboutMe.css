@@ -27,12 +27,21 @@
 }
 
 .skills-list {
-  list-style-type: none;
+  display: flex;           /* Enables flexbox */
+  flex-wrap: wrap;         /* Allows items to wrap onto the next line */
   padding: 0;
+  margin: 0;
+  background-color: #f4f4f4; /* Background color for the entire list */
+  list-style-type: none;   /* Removes default list item markers */
 }
 
-.skills-list li {
-  padding: 5px 0;
+li {
+  padding: 10px 15px;      /* Padding inside each <li> */
+  margin: 5px;             /* Space between list items */
+  background-color: white; /* White background for each item */
+  border: 1px solid #ddd;  /* Border for each item */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow to each item */
+  border-radius: 10px;
 }
 
 .bio-content {
@@ -43,6 +52,7 @@
 .skills-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 /* Social links */
@@ -87,6 +97,11 @@
   .social-links {
       flex-direction: row; /* Align icons in a row */
       justify-content: center;
+  }
+
+  .skills-list {
+    display: flex;
+    justify-content: center;
   }
 }
 
