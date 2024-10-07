@@ -35,7 +35,7 @@
   list-style-type: none;   /* Removes default list item markers */
 }
 
-li {
+.skills-list li {
   padding: 10px 15px;      /* Padding inside each <li> */
   margin: 5px;             /* Space between list items */
   background-color: white; /* White background for each item */
