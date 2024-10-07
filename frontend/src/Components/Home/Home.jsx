@@ -24,7 +24,7 @@ function Home() {
               ))}
             </div>
             <div className="dots"></div>
-            <button className="cta-button" onClick={scrollToTutorials}>Explore Data Structures</button>
+            <button className="cta-button" onClick={scrollToTutorials}>Explore Tutorials</button>
           </div>
         </div>
       </div>

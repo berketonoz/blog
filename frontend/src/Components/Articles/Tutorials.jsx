@@ -9,22 +9,34 @@ import "./Tutorials.css"; // Import the external CSS file
 const Tutorials = () => {
   const [tutorials, setTutorials] = useState([]);
   const navigate = useNavigate();
-  const url = 'https://raw.githubusercontent.com/berketonoz/blog/refs/heads/dev/frontend/public/tutorials.json';
+  const url =
+    "https://raw.githubusercontent.com/berketonoz/blog/refs/heads/dev/frontend/public/tutorials.json";
 
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
-      .then((data) => setTutorials(data))
+      .then((data) => {
+        data = data.sort((a, b) => {
+          return new Date(b.publishDate) - new Date(a.publishDate);
+        });
+        console.log(data);
+        setTutorials(data);
+      })
       .catch((err) => console.log(err));
   }, []);
 
   return (
     <div className="tutorial-container">
-      <h1 className="tutorial-header">Data Structures</h1>
+      {/* <h1 className="tutorial-header">Tutorials</h1> */}
       <ul className="tutorial-list">
         {tutorials.map((tutorial) => (
           <li key={tutorial.id} className="tutorial-item">
-            <h2 className="title" onClick={() => navigate(`/tutorial/${tutorial.id}`)}>{tutorial.title}</h2>
+            <h2
+              className="title"
+              onClick={() => navigate(`/tutorial/${tutorial.id}`)}
+            >
+              {tutorial.title}
+            </h2>
             <div className="tutorial-detail-header">
               <p className="info">
                 <strong>Programming Languages:</strong>
