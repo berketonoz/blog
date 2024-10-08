@@ -4,6 +4,7 @@ import { Tabs, Tab } from "react-bootstrap";
 import CodeSnippet from "../CodeSnippet/CodeSnippet";
 import CommentForm from "../Comments/Comments";
 import "./Tutorial.css"; // Using the same CSS for shared styles
+import Footer from "../Footer/Footer";
 
 const Tutorial = () => {
   const [tutorial, setTTutorial] = useState({});
@@ -56,6 +57,7 @@ const Tutorial = () => {
         </Tabs>
       </div>
       <CommentForm comments={tutorial.comments} />
+      <Footer />
     </>
   );
 };
