@@ -1,85 +1,106 @@
-/* Navbar.css */
-.navbar{
+/* Custom Navbar Styling */
+.navbar-custom {
   padding: 4px;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  z-index: 1000;
 }
 
-/* Transparent background for when the user is at the top */
-.transparent-bg {
-  background-color: rgba(255, 255, 255, 0.95);
-  /* Light color with 30% opacity */
-  transition: background-color 0.3s ease-in-out;
-  border-radius: 20px;
-  margin: 5px;
-  /* Smooth transition between states */
+/* Transparent Background */
+.navbar-transparent {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px); /* Adds a blur effect for better readability */
 }
 
-/* Navbar link styles */
+/* Solid Background on Scroll */
+.navbar-bg {
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px); /* Adds a blur effect for better readability */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo Styling */
+.logo {
+  width: 60px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+.navbar-brand{
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* Navbar Toggle (Hamburger) */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Nav Links Styling */
 .animated-link {
   position: relative;
-  color: #f9f9f9 !important;
+  color: #555555 !important;
   font-size: 1rem;
+  margin-right: 20px;
+  transition: color 0.3s ease-in-out;
 }
 
 .animated-link::after {
   content: "";
   position: absolute;
   width: 100%;
-  height: 2px;
-  bottom: 0;
+  height: 2rem;
+  bottom: 6px;
   left: 0;
-  background-color: #5a609a;
-  transform: scaleX(0);
-  transform-origin: bottom left;
-  transition: transform 0.3s ease-out;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 0.3s ease-in-out;
 }
 
-.animated-link:hover::after {
-  transform: scaleX(1);
+.animated-link:hover::after,
+.animated-link:focus::after {
+  /* width: 100%; */
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Logo color */
-.logo {
-  width: 50px;
-  border-radius: 25%;
-  background-color: initial;
+.navbar-expand-md .navbar-collapse {
+  justify-content: flex-end;
 }
 
-/* Example of animating the background color on hover */
-@keyframes changeBackgroundColor {
-  from {
-    background-color: initial;
-  }
-
-  to {
-    background-color: #41464b;
-  }
-}
-
-.logo:hover {
-  animation: changeBackgroundColor 0.3s ease-in forwards;
-  /* Duration, easing, and fill-mode */
-}
-
+/* Align Nav Items to the Right */
 .navbar-nav {
-  gap: 1em;
+  align-items: center;
 }
 
-/* Navbar link color */
-.link {
-  color: #41464b !important;
-}
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .animated-link {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 
-.navbar-toggler{
-  width: auto;
-  padding-block: 2px;
-}
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-.navbar-toggler-icon{
-  width: 20px;
-}
+  .navbar-transparent {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
 
-@media (min-width: 768px) {
-  .navbar-expand-md .navbar-collapse {
-      justify-content: end;
+  .navbar-bg {
+    background-color: #ffffff;
   }
 }
+
