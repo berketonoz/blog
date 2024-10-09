@@ -1,46 +1,47 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import LogoImg from "../../assets/logo.png";
 import "./Navbar.css";
 
 function NavbarPanel() {
   const [navbarBg, setNavbarBg] = useState(false);
-  const [expanded, setExpanded] = useState(false); // State to manage Navbar expand/collapse
-  const navRef = useRef(null); // Create a reference for the nav collapse
+  const [expanded, setExpanded] = useState(false);
+  const navRef = useRef(null);
+  const location = useLocation(); // To detect route changes
 
   // Function to handle scroll event
   const handleScroll = () => {
-    setNavbarBg(window.scrollY > 40);
+    if (window.scrollY > 40) {
+      setNavbarBg(true);
+    } else {
+      setNavbarBg(false);
+    }
   };
 
-  // Close the nav collapse when clicking outside
+  // Function to handle clicks outside the navbar when expanded
   const handleClickOutside = (event) => {
-    if ((navRef.current && !navRef.current.contains(event.target)) || window.location.href ) {
-      // Check if the navbar is open
-      const navbarCollapse = document.querySelector(".navbar-collapse");
-      if (navbarCollapse.classList.contains("show")) {
-        // Trigger the collapse if the navbar is open
-        document.querySelector(".navbar-toggler").click();
-      }
+    if (navRef.current && !navRef.current.contains(event.target)) {
+      setExpanded(false);
     }
   };
 
-  // Close the nav collapse when clicking on a link
+  // Close the navbar when a link is clicked
   const handleLinkClick = () => {
-    const navbarCollapse = document.querySelector('.navbar-collapse');
-    if (navbarCollapse.classList.contains('show')) {
-      // Trigger the collapse if the navbar is open
-      document.querySelector('.navbar-toggler').click();
-    }
+    setExpanded(false);
   };
 
-  // Add scroll event listener when the component mounts
+  // Close the navbar when the route changes
+  useEffect(() => {
+    setExpanded(false);
+  }, [location]);
+
+  // Add scroll and click event listeners
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Clean up event listener when the component unmounts
+    // Clean up event listeners on unmount
     return () => {
       window.removeEventListener("scroll", handleScroll);
       document.removeEventListener("mousedown", handleClickOutside);
@@ -50,32 +51,52 @@ function NavbarPanel() {
   return (
     <Navbar
       expanded={expanded}
-      expand="md" // This ensures the navbar toggles on medium or smaller devices
-      className="fixed-top navbar-dark"
-      onToggle={() => setExpanded(!expanded)}
-      onSelect={() => setExpanded(false)} // Collapse the navbar on selecting an item
-      bg="dark"
+      expand="md"
+      fixed="top"
+      className={`navbar-custom ${navbarBg ? "navbar-bg" : "navbar-transparent"}`}
+      onToggle={setExpanded}
       ref={navRef}
+      aria-label="Main Navigation"
     >
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img src={LogoImg} alt="Logo" className="logo" />
+          <img src={LogoImg} alt="Company Logo" className="logo" />
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />{" "}
-        {/* This is the hamburger menu button */}
+        <Navbar.Toggle
+          aria-controls="responsive-navbar-nav"
+          aria-expanded={expanded}
+          aria-label="Toggle navigation"
+        />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ml-auto">
-            {" "}
-            {/* This aligns the nav items to the right */}
-            <Nav.Link as={Link} to="/" className="animated-link" onClick={handleLinkClick}>
+          <Nav className="">
+            <Nav.Link
+              as={Link}
+              to="/"
+              className="animated-link"
+              onClick={handleLinkClick}
+              aria-label="Home"
+            >
               Home
             </Nav.Link>
-            <Nav.Link as={Link} to="/about" className="animated-link" onClick={handleLinkClick}>
+            <Nav.Link
+              as={Link}
+              to="/about"
+              className="animated-link"
+              onClick={handleLinkClick}
+              aria-label="About Us"
+            >
               About
             </Nav.Link>
-            <Nav.Link as={Link} to="/contact" className="animated-link" onClick={handleLinkClick}>
+            <Nav.Link
+              as={Link}
+              to="/contact"
+              className="animated-link"
+              onClick={handleLinkClick}
+              aria-label="Contact Us"
+            >
               Contact
             </Nav.Link>
+            {/* Add more Nav.Links here if needed */}
           </Nav>
         </Navbar.Collapse>
       </Container>
