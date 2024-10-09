@@ -68,7 +68,7 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-.animated-link:hover::after,
+.animated-link:not(.no-hover):hover::after,
 .animated-link:focus::after {
   /* width: 100%; */
   background-color: rgba(255, 255, 255, 0.8);
@@ -104,3 +104,70 @@
   }
 }
 
+
+
+/* ToggleSwitch css */
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/* Hide the default checkbox */
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+/* The circle inside the slider */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+/* When checked, change background color */
+.toggle-switch input:checked + .slider {
+  background-color: #2196F3;
+}
+
+/* Move the circle when checked */
+.toggle-switch input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Optional: Add focus styles */
+.toggle-switch input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.theme-slider{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
