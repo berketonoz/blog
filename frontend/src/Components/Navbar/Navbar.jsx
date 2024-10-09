@@ -7,8 +7,11 @@ import "./Navbar.css";
 function NavbarPanel() {
   const [navbarBg, setNavbarBg] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  const [isOn, setIsOn] = useState(false);
   const navRef = useRef(null);
   const location = useLocation(); // To detect route changes
+
+  const handleToggle = () => setIsOn(!isOn);
 
   // Function to handle scroll event
   const handleScroll = () => {
@@ -53,7 +56,9 @@ function NavbarPanel() {
       expanded={expanded}
       expand="md"
       fixed="top"
-      className={`navbar-custom ${navbarBg ? "navbar-bg" : "navbar-transparent"}`}
+      className={`navbar-custom ${
+        navbarBg ? "navbar-bg" : "navbar-transparent"
+      }`}
       onToggle={setExpanded}
       ref={navRef}
       aria-label="Main Navigation"
@@ -96,6 +101,19 @@ function NavbarPanel() {
             >
               Contact
             </Nav.Link>
+            <Nav.Item className="animated- no-hover" aria-label="theme">
+              <div className="theme-slider">
+                Dark Mode
+                <label className="toggle-switch">
+                  <input
+                    type="checkbox"
+                    checked={isOn}
+                    onChange={handleToggle}
+                  />
+                  <span className="slider"></span>
+                </label>
+              </div>
+            </Nav.Item>
             {/* Add more Nav.Links here if needed */}
           </Nav>
         </Navbar.Collapse>
