@@ -5,7 +5,7 @@ import { faCalendar, faComment } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Tutorials.css"; // Import the external CSS file
 
-// tutorials Component
+// Tutorials Component
 const Tutorials = () => {
   const [tutorials, setTutorials] = useState([]);
   const navigate = useNavigate();
@@ -13,58 +13,66 @@ const Tutorials = () => {
     "https://raw.githubusercontent.com/berketonoz/blog/refs/heads/dev/frontend/public/tutorials.json";
 
   useEffect(() => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        data = data.sort((a, b) => {
-          return new Date(b.publishDate) - new Date(a.publishDate);
-        });
+    const fetchTutorials = async () => {
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        data.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
         setTutorials(data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+      } catch (err) {
+        console.error("Failed to fetch tutorials:", err);
+      }
+    };
+
+    fetchTutorials();
+  }, [url]);
 
   return (
     <div className="tutorial-container">
-      {/* <h1 className="tutorial-header">Tutorials</h1> */}
       <ul className="tutorial-list">
         {tutorials.map((tutorial) => (
           <li key={tutorial.id} className="tutorial-item">
             <h2
-              className="title"
+              className="tutorial-title"
               onClick={() => navigate(`/tutorial/${tutorial.id}`)}
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') navigate(`/tutorial/${tutorial.id}`);
+              }}
+              aria-label={`Navigate to ${tutorial.title}`}
             >
               {tutorial.title}
             </h2>
-            <div className="tutorial-detail-header">
-              <p className="info">
-                <strong>Programming Languages:</strong>
-                <span className="info-item">
+            <div className="tutorial-details">
+              <div className="detail-group">
+                <strong>Languages:</strong>
+                <div className="badges">
                   {tutorial.programmingLanguages.map((language, index) => (
-                    <span key={index} className="item-badge">
+                    <span key={index} className="badge">
                       {language}
                     </span>
                   ))}
-                </span>
-              </p>
-              <p className="info">
+                </div>
+              </div>
+              <div className="detail-group">
                 <strong>Category:</strong>
-                <span className="info-item">
-                  <span className="item-badge">{tutorial.category}</span>
-                </span>
-              </p>
-              <p className="info">
-                <FontAwesomeIcon icon={faCalendar} /> {tutorial.publishDate}
-              </p>
-              <p className="info">
-                <FontAwesomeIcon icon={faComment} /> {tutorial.comments.length}
-              </p>
+                <span className="badge">{tutorial.category}</span>
+              </div>
+              <div className="detail-group">
+                <FontAwesomeIcon icon={faCalendar} />{" "}
+                <span>{new Date(tutorial.publishDate).toLocaleDateString()}</span>
+              </div>
+              <div className="detail-group">
+                <FontAwesomeIcon icon={faComment} />{" "}
+                <span>{tutorial.comments.length} Comments</span>
+              </div>
             </div>
-            <p className="description">{tutorial.description}</p>
+            <p className="tutorial-description">{tutorial.description}</p>
             <div className="button-container">
               <Button
                 variant="primary"
                 onClick={() => navigate(`/tutorial/${tutorial.id}`)}
+                className="read-button"
               >
                 Continue Reading
               </Button>

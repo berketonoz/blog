@@ -80,7 +80,7 @@
 .cta-button {
     margin-top: 5rem;
     padding: 0.8rem 2rem;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     color: #dee2e6;
     background-color: #495057;
     border-radius: 5px;
@@ -117,7 +117,7 @@
 
     .cta-button {
         padding: 0.6rem 2rem; /* Adjust button padding */
-        font-size: 1.6rem; /* Adjust button font size */
+        font-size: 1.2rem; /* Adjust button font size */
     }
 
     .background-container {
@@ -142,7 +142,7 @@
     }
 
     .cta-button {
-        font-size: 1.2rem; /* Further reduce button font size */
+        font-size: 0.8rem; /* Further reduce button font size */
         margin-top: 30%;
     }
 }

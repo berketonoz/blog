@@ -1,80 +1,148 @@
-.tutorial-wrapper {
-    margin: 20px;
-    margin-top: 80px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #FFFFFF;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif !important;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    color: #242424;
-    font-size: 18px;
-  }
+/* tutorial.css */
 
-.tutorial-wrapper h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-  border-bottom: 2px solid #3498db; /* Adds a blue border under the header */
-  padding-bottom: 5px;
-  font-size: 20px;
-  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
+/* Base Styles */
+body {
+  font-family: 'Source Serif Pro', Georgia, Cambria, 'Times New Roman', Times, serif;
+  color: #242424;
+  font-size: 18px;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
 }
-  
+
+/* Tutorial Wrapper */
+.tutorial-wrapper {
+  margin: 80px 20px 20px 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Tutorial Title */
 .tutorial-title {
   margin-bottom: 10px;
   font-size: 32px;
   font-weight: 700;
-  color: #333;
+  color: #333333;
 }
 
+/* Tutorial Meta Information */
 .tutorial-category,
-.tutorial-publish-date {
-  font-size: 1rem;
-  margin: 5px 0;
-  color: #555;
-}
-
+.tutorial-publish-date,
 .tutorial-languages {
-  font-size: 1rem;
+  font-size: 16px;
   margin: 5px 0;
+  color: #555555;
 }
 
+.tutorial-category::before {
+  content: 'Category: ';
+  font-weight: 600;
+}
+
+.tutorial-publish-date::before {
+  content: 'Published on: ';
+  font-weight: 600;
+}
+
+.tutorial-languages::before {
+  content: 'Programming Languages: ';
+  font-weight: 600;
+}
+
+/* Language List */
 .language-list {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
+  margin-top: 5px;
+}
+
+.language-badge {
+  padding: 5px 10px;
+  border-radius: 12px;
+  background-color: #ddd;
+  color: #242424;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .language-badge.active {
   background-color: #007bff;
-  color: white;
+  color: #ffffff;
 }
 
+.language-badge:hover,
+.language-badge:focus {
+  background-color: #3498db;
+  color: #ffffff;
+  outline: none;
+}
+
+/* Tutorial Headers */
+.tutorial-wrapper h3 {
+  margin: 20px 0 10px 0;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 5px;
+  font-size: 20px;
+  font-family: 'Sohne', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: #333333;
+}
+
+/* Tutorial Details */
 .tutorial-details {
   margin-top: 20px;
-}
-
-hr {
-  margin: 20px 0;
-  border: 1px solid #ddd;
-}
-
-.loading-indicator {
-  text-align: center;
-  font-size: 1.5rem;
-  color: #777;
-}
-
-.tutorial-details {
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .function-description {
   margin: 10px 0;
   font-style: italic;
-  color: #555;
+  color: #555555;
 }
-  
-  
+
+hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+/* Loading Indicator */
+.loading-indicator {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #777777;
+}
+
+/* Error Message */
+.error-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #e74c3c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tutorial-wrapper {
+    margin: 60px 10px 10px 10px;
+    padding: 15px;
+  }
+
+  .tutorial-title {
+    font-size: 28px;
+  }
+
+  .tutorial-wrapper h3 {
+    font-size: 18px;
+  }
+
+  .language-badge {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+}

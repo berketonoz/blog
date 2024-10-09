@@ -1,142 +1,170 @@
+/* Container Styling */
 .tutorial-container {
-  width: 97%;         /* Full width on smaller screens */
-  margin: 20px;     /* Margin top */
+  width: 100%;
+  max-width: 1200px; /* Center the content with a max width */
+  margin: 40px auto; /* Center the container */
   padding: 20px;
-  background-color: #f4f7f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-size: 18px;
-  -webkit-font-smoothing: antialiased;
-  color: #242424;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333333;
 }
 
-/* Ensure the tutorial list is a flex container for better responsiveness */
+/* Tutorial List */
 .tutorial-list {
-  list-style-type: none; /* Remove default list styling */
-  padding: 0;           /* Remove default padding */
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* tutorial item styling */
+/* Individual Tutorial Item */
 .tutorial-item {
-  margin: 20px 0;      /* Vertical spacing between tutorials */
-  padding: 15px;       /* Internal padding */
-  border: 1px solid #ddd; /* Border around each tutorial */
-  border-radius: 5px;  /* Rounded corners */
-  background-color: #fff; /* White background for tutorials */
-  transition: box-shadow 0.3s; /* Smooth hover effect */
-}
-
-/* tutorial jeader detail styling */
-.tutorial-detail-header {
   display: flex;
-  flex-direction: row; /* Stack details vertically */
-  gap: 2rem;
+  flex-direction: column;
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #fafafa;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect */
 .tutorial-item:hover {
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+  /* transform: translateY(-5px); */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
-.title {
-  font-size: 1.5rem;
-  margin: 0 0 10px 0;
-  font-weight: 400;
-  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+/* Tutorial Title */
+.tutorial-title {
+  font-size: 1.75rem;
+  margin-bottom: 15px;
+  color: #1a73e8;
   cursor: pointer;
+  outline: none;
 }
 
-.title:hover {
-  color: #A91101;
+.tutorial-title:hover,
+.tutorial-title:focus {
+  color: #174ea6;
+  text-decoration: underline;
 }
 
-.info {
-  font-size: 0.9rem;
-  color: #555;
-  margin-bottom: 0.5em;
+/* Tutorial Details */
+.tutorial-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
 }
 
-.info-item {
+.detail-group {
   display: flex;
+  align-items: center;
   gap: 5px;
+  font-size: 0.95rem;
+  color: #555555;
 }
 
-.item-badge {
-  background-color: #e0e0e0;
-  border-radius: 5px;
-  padding: 0px 4px;
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+/* Badge Styling */
+.badge {
+  background-color: #adb5bd; /* New background color (e.g., bright yellow) */
+  color: #333333;            /* New text color for better contrast */
+  border-radius: 12px;
+  padding: 5px 10px;
   font-size: 0.8rem;
-  box-shadow: 1px 1px 1px #000;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.description {
-  margin: 10px 0;
+
+/* Tutorial Description */
+.tutorial-description {
   font-size: 1rem;
-  color: #333;
-  font-family: source-serif-pro, Georgia, Cambria, "Times New Roman", Times, serif;
+  line-height: 1.6;
+  color: #444444;
+  margin-bottom: 20px;
 }
 
+/* Button Container */
 .button-container {
-  text-align: right; /* Aligns the button to the right */
+  text-align: right;
 }
 
-.button {
-  margin-top: 10px; /* Adds space above the button */
+.read-button {
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-/* Responsive design for smaller screens */
-@media (max-width: 768px) {
+.read-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
   .tutorial-container {
-    padding: 10px; /* Reduce padding for smaller screens */
+    padding: 15px;
   }
 
-  .tutorial-item {
-    margin: 15px 0; /* Reduce margin between tutorials */
-    padding: 10px; /* Reduce internal padding */
+  .tutorial-title {
+    font-size: 1.5rem;
   }
 
-  .tutorial-detail-header {
-    /*flex-direction: column; /* Stack details vertically */
-    /*align-items: flex-start; /* Align items to the start */
+  .tutorial-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .tutorial-details {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
   }
 
-  .title {
-    font-size: 1.5rem; /* Decrease font size for titles */
+  .detail-group {
+    font-size: 0.9rem;
   }
 
-  .info {
-    font-size: 0.9rem; /* Smaller font for info */
+  .badge {
+    font-size: 0.75rem;
+    padding: 4px 8px;
   }
 
-  .description {
-    font-size: 0.9rem; /* Smaller font for descriptions */
+  .read-button {
+    width: 100%;
+    text-align: center;
   }
 
   .button-container {
-    text-align: center; /* Center buttons on smaller screens */
-  }
-
-  .item-badge {
-    margin: 0 5px; /* Adjust margin for badges */
-    font-size: 0.8rem; /* Smaller font for badges */
+    text-align: center;
   }
 }
 
-/* Further adjustments for mobile devices */
 @media (max-width: 480px) {
-  .tutorial-detail-header {
-    flex-direction: column; /* Stack details vertically */
-    gap: 5px;
-  }
-  .title {
-    font-size: 1.2rem; /* Further decrease title size */
+  .tutorial-title {
+    font-size: 1.3rem;
   }
 
-  .info {
-    font-size: 0.8rem; /* Further decrease info size */
+  .tutorial-description {
+    font-size: 0.9rem;
   }
 
-  .description {
-    font-size: 0.8rem; /* Further decrease description size */
+  .detail-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .badge {
+    padding: 3px 6px;
+    font-size: 0.7rem;
   }
 }
