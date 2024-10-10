@@ -1,21 +1,28 @@
 /* Custom Navbar Styling */
 .navbar-custom {
   padding: 4px;
-  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
   z-index: 1000;
 }
 
 /* Transparent Background */
 .navbar-transparent {
-  background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px); /* Adds a blur effect for better readability */
+}
+
+.dark-theme{
+  color: #aeaeae;
+}
+
+.light-theme{
+  color: rgba(0, 0, 0, 0.9);
 }
 
 /* Solid Background on Scroll */
 .navbar-bg {
-  background-color: rgba(255, 255, 255, 0.4);
+  /* background-color: rgba(255, 255, 255, 0.3); */
   backdrop-filter: blur(4px); /* Adds a blur effect for better readability */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Logo Styling */
@@ -62,16 +69,14 @@
   position: absolute;
   width: 100%;
   height: 2rem;
-  bottom: 6px;
+  bottom: 4px;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10%;
   transition: background-color 0.3s ease-in-out;
 }
 
-.animated-link:not(.no-hover):hover::after,
-.animated-link:focus::after {
-  /* width: 100%; */
-  background-color: rgba(255, 255, 255, 0.8);
+.animated-link:not(.no-hover):hover::after{
+  background-color: rgba(60, 60,60, 0.7);
 }
 
 .navbar-expand-md .navbar-collapse {
