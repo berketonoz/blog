@@ -38,7 +38,7 @@ function Home({darkMode}) {
           </div>
         </div>
       </div>
-      <div ref={tutorialsRef} className={`tutorials-section ${darkMode ? "container-dark":"container-light"}`}>
+      <div ref={tutorialsRef} className={`tutorials-section`}>
         <Tutorials darkMode={darkMode}/>
       </div>
       <Footer />
