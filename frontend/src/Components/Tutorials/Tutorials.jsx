@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Tutorials.css"; // Import the external CSS file
 
 // Tutorials Component
-const Tutorials = () => {
+const Tutorials = ({darkMode}) => {
   const [tutorials, setTutorials] = useState([]);
   const navigate = useNavigate();
   const url =
@@ -28,10 +28,10 @@ const Tutorials = () => {
   }, [url]);
 
   return (
-    <div className="tutorial-container">
+    <div className={`tutorial-container ${darkMode ? "" : ""}`}>
       <ul className="tutorial-list">
         {tutorials.map((tutorial) => (
-          <li key={tutorial.id} className="tutorial-item">
+          <li key={tutorial.id} className={`tutorial-item ${darkMode ? "item-dark": "item-light"}`}>
             <h2
               className="tutorial-title"
               onClick={() => navigate(`/tutorial/${tutorial.id}`)}

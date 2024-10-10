@@ -4,7 +4,7 @@ import HomeBg from "../../assets/home-background.jpg";
 import Tutorials from "../Tutorials/Tutorials";
 import Footer from "../Footer/Footer";
 
-function Home() {
+function Home({darkMode}) {
   const text = "Welcome to Tony's Tech Blog";
   const tutorialsRef = useRef(null);
 
@@ -38,8 +38,8 @@ function Home() {
           </div>
         </div>
       </div>
-      <div ref={tutorialsRef} className="tutorials-section">
-        <Tutorials />
+      <div ref={tutorialsRef} className={`tutorials-section ${darkMode ? "container-dark":"container-light"}`}>
+        <Tutorials darkMode={darkMode}/>
       </div>
       <Footer />
     </>

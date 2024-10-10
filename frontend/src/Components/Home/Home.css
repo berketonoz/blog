@@ -96,6 +96,15 @@
     justify-content: center;
 }
 
+.container-dark{
+    background-color: #212529;
+}
+
+.container-light{
+    background-color: #f8f9fa;
+}
+
+
 /* Responsive rules for phone view */
 @media (max-width: 768px) {
     .main-container {

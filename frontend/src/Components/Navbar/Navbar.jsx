@@ -4,14 +4,13 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import LogoImg from "../../assets/logo.png";
 import "./Navbar.css";
 
-function NavbarPanel() {
+function NavbarPanel({darkMode, setDarkMode}) {
   const [navbarBg, setNavbarBg] = useState(false);
   const [expanded, setExpanded] = useState(false);
-  const [isOn, setIsOn] = useState(false);
   const navRef = useRef(null);
   const location = useLocation(); // To detect route changes
 
-  const handleToggle = () => setIsOn(!isOn);
+  const handleToggle = () => setDarkMode(!darkMode);
 
   // Function to handle scroll event
   const handleScroll = () => {
@@ -58,12 +57,13 @@ function NavbarPanel() {
       fixed="top"
       className={`navbar-custom ${
         navbarBg ? "navbar-bg" : "navbar-transparent"
-      }`}
+      } ${darkMode ? "dark-theme" : "light-theme"}`}
+      bg={`${darkMode ? "dark": "light"}`}
       onToggle={setExpanded}
       ref={navRef}
       aria-label="Main Navigation"
     >
-      <Container>
+      <Container >
         <Navbar.Brand as={Link} to="/">
           <img src={LogoImg} alt="Company Logo" className="logo" />
         </Navbar.Brand>
@@ -107,7 +107,7 @@ function NavbarPanel() {
                 <label className="toggle-switch">
                   <input
                     type="checkbox"
-                    checked={isOn}
+                    checked={darkMode}
                     onChange={handleToggle}
                   />
                   <span className="slider"></span>
