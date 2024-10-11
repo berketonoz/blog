@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { duotoneDark, duotoneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import "./CodeSnippet.css"; // Optional: CSS file for styling
 
-const CodeSnippet = ({ code }) => {
+const CodeSnippet = ({ code, darkMode }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [fadeOut, setFadeOut] = useState(false); // New state for fade-out
+  const style = darkMode ? duotoneDark : duotoneLight;
 
   const handleCopy = (event) => {
     navigator.clipboard
@@ -46,7 +48,7 @@ const CodeSnippet = ({ code }) => {
           </div>
         )}
       </div>
-      <SyntaxHighlighter language="cpp" customStyle={{backgroundColor: "inherit"}} showLineNumbers >
+      <SyntaxHighlighter language="cpp" style={style} showLineNumbers >
         {code}
       </SyntaxHighlighter>
     </div>
