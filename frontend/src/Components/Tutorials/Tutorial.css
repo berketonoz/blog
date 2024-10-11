@@ -1,26 +1,22 @@
 /* tutorial.css */
 
-/* Base Styles */
-body {
-  font-family: 'Source Serif Pro', Georgia, Cambria, 'Times New Roman', Times, serif;
-  color: #242424;
-  font-size: 18px;
-  -webkit-font-smoothing: antialiased;
-  margin: 0;
-  padding: 0;
-  background-color: #f9f9f9;
-}
-
 /* Tutorial Wrapper */
 .tutorial-wrapper {
   margin: 80px 20px 20px 20px;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  background-color: #ffffff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
+}
+
+.dark-theme{
+  background-color: #495057;
+}
+
+.light-theme{
+  background-color: #FAFAFA;
 }
 
 /* Tutorial Title */
@@ -28,7 +24,6 @@ body {
   margin-bottom: 10px;
   font-size: 32px;
   font-weight: 700;
-  color: #333333;
 }
 
 /* Tutorial Meta Information */
@@ -37,7 +32,7 @@ body {
 .tutorial-languages {
   font-size: 16px;
   margin: 5px 0;
-  color: #555555;
+  /* color: #555555; */
 }
 
 .tutorial-category::before {
@@ -105,7 +100,7 @@ body {
 .function-description {
   margin: 10px 0;
   font-style: italic;
-  color: #555555;
+  /* color: #555555; */
 }
 
 hr {
@@ -127,6 +122,15 @@ hr {
   font-size: 1.2rem;
   color: #e74c3c;
 }
+
+.nav-link.active{
+  background-color: #49505700 !important;
+  color: #FAFAFA !important;
+}
+
+/* .nav-tabs{
+  border-bottom: 1px solid black;
+} */
 
 /* Responsive Design */
 @media (max-width: 768px) {

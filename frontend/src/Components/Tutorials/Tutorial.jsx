@@ -7,7 +7,7 @@ import CommentForm from "../Comments/Comments";
 import "./Tutorial.css"; // Using the updated CSS for shared styles
 import Footer from "../Footer/Footer";
 
-const Tutorial = () => {
+const Tutorial = ({darkMode}) => {
   const [tutorial, setTutorial] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -49,7 +49,7 @@ const Tutorial = () => {
   if (error) {
     return (
       <div className="tutorial-wrapper">
-        <h2 className="tutorial-title">Error</h2>
+        <h2 className="tutorial-title no-hover">Error</h2>
         <p className="error-message">{error}</p>
       </div>
     );
@@ -57,8 +57,8 @@ const Tutorial = () => {
 
   return (
     <>
-      <div className="tutorial-wrapper">
-        <h2 className="tutorial-title">{tutorial.title}</h2>
+      <div className={`tutorial-wrapper ${darkMode ? "dark-theme" : "light-theme"}`}>
+        <h2 className="tutorial-title no-hover">{tutorial.title}</h2>
         <div className="tutorial-category">{tutorial.category}</div>
         <div className="tutorial-publish-date">{tutorial.publishDate}</div>
         <div className="tutorial-languages"></div>
@@ -74,7 +74,7 @@ const Tutorial = () => {
                     <p className="function-description">
                       {tutorial.descriptions[lang][funcName]}
                     </p>
-                    <CodeSnippet code={tutorial.codeSnippets[lang][funcName]} />
+                    <CodeSnippet code={tutorial.codeSnippets[lang][funcName]} darkMode={darkMode} />
                   </div>
                 ))}
               </div>

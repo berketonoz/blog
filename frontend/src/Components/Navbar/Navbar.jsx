@@ -1,10 +1,11 @@
+// NavbarPanel.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import LogoImg from "../../assets/logo.png";
 import "./Navbar.css";
 
-function NavbarPanel({darkMode, setDarkMode}) {
+function NavbarPanel({ darkMode, setDarkMode }) {
   const [navbarBg, setNavbarBg] = useState(false);
   const [expanded, setExpanded] = useState(false);
   const navRef = useRef(null);
@@ -57,13 +58,15 @@ function NavbarPanel({darkMode, setDarkMode}) {
       fixed="top"
       className={`navbar-custom ${
         navbarBg ? "navbar-bg" : "navbar-transparent"
-      } ${darkMode ? "dark-theme" : "light-theme"}`}
-      bg={`${darkMode ? "dark": "light"}`}
-      onToggle={setExpanded}
+      } ${darkMode ? "dark-theme" : "light-theme"} ${
+        expanded ? "active" : ""
+      }`} // Add 'active' class when expanded
+      bg={`${darkMode ? "dark" : "light"}`}
+      onToggle={() => setExpanded(!expanded)} // Toggle expanded state
       ref={navRef}
       aria-label="Main Navigation"
     >
-      <Container >
+      <Container>
         <Navbar.Brand as={Link} to="/">
           <img src={LogoImg} alt="Company Logo" className="logo" />
         </Navbar.Brand>
