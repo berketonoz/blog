@@ -123,14 +123,41 @@ hr {
   color: #e74c3c;
 }
 
-.nav-link.active{
-  background-color: #49505700 !important;
-  color: #FAFAFA !important;
+.nav-tabs .light-theme{
+  border-color: #000 !important;
 }
 
-/* .nav-tabs{
-  border-bottom: 1px solid black;
-} */
+.nav-tabs{
+  border-color: #000 !important;
+}
+
+/* Hover State - Light Theme */
+.tutorial-wrapper.light-theme .nav-tabs .nav-link:hover {
+  background-color: #f0f0f0;
+  color: #000;
+  border-color: #ddd;
+}
+
+/* Active State - Light Theme */
+.tutorial-wrapper.light-theme .nav-tabs .nav-link.active {
+  background-color: #fff;
+  color: #000; /* Bootstrap's primary color */
+  border-color: #ddd #ddd #fff;
+}
+
+/* Hover State - Dark Theme */
+.tutorial-wrapper.dark-theme .nav-tabs .nav-link:hover {
+  background-color: #6f6f6f;
+  color: #fff;
+  border-color: #454d55;
+}
+
+/* Active State - Dark Theme */
+.tutorial-wrapper.dark-theme .nav-tabs .nav-link.active {
+  background-color: #4d4d4d;
+  color: #fff;
+  border-color: #343a40 #343a40 #4d4d4d;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
