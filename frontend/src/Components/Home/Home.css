@@ -17,7 +17,7 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent black */
     opacity: 0; /* Initially transparent */
-    transition: opacity 0.4s ease-in-out; /* Transition effect */
+    transition: opacity var(--transition-duration) ease-in-out; /* Transition effect */
     pointer-events: none; /* Allows clicks to pass through */
     z-index: 1; /* Sits above the background image */
 }

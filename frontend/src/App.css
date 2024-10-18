@@ -1,212 +1,72 @@
-html {
-    width: 100%;
-    height: 100%;
+/* :root - Global CSS Variables */
+:root {
+  --background-color-light: #f8f9fa;
+  --background-navbar-color-light: #f9f9f9;
+  --background-color-dark: #343a40;
+  --background-navbar-color-dark: #212529;
+  --text-color-light: #333;
+  --text-color-dark: #c9c9c9;
+  --primary-color-light: #3498db;
+  --primary-color-dark: #4db8ff;
+  --secondary-color-light: #2ecc71;
+  --secondary-color-dark: #27ae60;
+  --button-bg-color-light: var(--primary-color-light);
+  --button-bg-color-dark: var(--primary-color-dark);
+  --button-text-color: #fff;
+
+  /* Font Variables */
+  --font-body: 'Arial', sans-serif;
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --font-size-xsmall: 13px;
+  --heading-font-size-h1: 2rem;
+  --heading-font-size-h2: 1.75rem;
+  --heading-font-size-h3: 1.5rem;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /* Spacing Variables */
+  --base-padding: 20px;
+  --small-padding: 10px;
+  --xsmall-padding: 5px;
+
+  /* Breakpoints */
+  --breakpoint-tablet: 768px;
+  --breakpoint-phone: 480px;
+
+  /* Transition Duration */
+  --transition-duration: 0.4s;
 }
 
 body {
-    background-color: #E5E4E2;
-    font-size: 16px; /* Default font size for body text */
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  transition: background-color var(--transition-duration) ease-in-out;
 }
 
-/* Reset.css */
-
-/* Remove default margin, padding, and box-sizing */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+.dark-mode {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
 }
 
-/* Remove default styles on HTML5 elements */
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section,
-summary {
-    display: block;
-}
-
-audio,
-canvas,
-video {
-    display: inline-block;
-}
-
-/* Reset form elements */
-button,
-input,
-optgroup,
-select,
-textarea {
-    margin: 0;
-    font: inherit;
-}
-
+/* Button styles */
 button {
-    border: none;
-    background: none;
-    cursor: pointer;
+  background-color: var(--button-bg-color-light);
+  color: var(--button-text-color);
+  transition: background-color 0.3s ease;
 }
 
-textarea {
-    resize: vertical;
-}
+/* button:hover {
+  background-color: var(--secondary-color-light);
+} */
 
-input {
-    line-height: normal;
-}
+/* .dark-mode button {
+  background-color: var(--button-bg-color-dark);
+} */
 
-select {
-    text-transform: none;
-}
-
-/* Remove bullets from lists */
-ul,
-ol {
-    list-style: none;
-}
-
-/* Normalize heading fonts */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-size: 100%;
-    font-weight: normal;
-}
-
-/* Reset hyperlink appearance */
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* Reset images */
-img {
-    border: 0;
-    max-width: 100%;
-    height: auto;
-}
-
-/* Reset table properties */
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-/* Reset quotes and citations */
-blockquote,
-q {
-    quotes: none;
-}
-
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-    content: '';
-}
-
-/* Reset fieldset and legend */
-fieldset {
-    border: 0;
-    padding: 0;
-    margin: 0;
-}
-
-legend {
-    display: none;
-}
-
-/* Reset HTML5 hidden attribute */
-[hidden] {
-    display: none;
-}
-
-/* Main container */
-.main-container {
-    width: 100%;
-    height: 100%;
-    background-color: rgb(191, 215, 216);
-    padding: 20px; /* Padding for better layout on mobile */
-}
-
-/* Responsive font sizes for headings */
-h1 {
-    font-size: 2rem; /* Default heading size */
-}
-
-h2 {
-    font-size: 1.75rem;
-}
-
-h3 {
-    font-size: 1.5rem;
-}
-
-/* Add responsiveness for small screens */
-@media (max-width: 768px) {
-    body {
-        font-size: 14px; /* Adjust base font size for smaller screens */
-    }
-
-    .main-container {
-        padding: 10px; /* Reduce padding for smaller screens */
-    }
-
-    h1 {
-        font-size: 1.75rem; /* Adjust heading sizes for small screens */
-    }
-
-    h2 {
-        font-size: 1.5rem;
-    }
-
-    h3 {
-        font-size: 1.25rem;
-    }
-
-    button {
-        font-size: 14px; /* Adjust button font size for small screens */
-        padding: 10px 20px; /* Make buttons more mobile-friendly */
-    }
-}
-
-/* Add responsiveness for even smaller screens (phones) */
-@media (max-width: 480px) {
-    body {
-        font-size: 13px; /* Further reduce font size for very small screens */
-    }
-
-    h1 {
-        font-size: 1.5rem; /* Further reduce heading sizes for phones */
-    }
-
-    h2 {
-        font-size: 1.25rem;
-    }
-
-    h3 {
-        font-size: 1.1rem;
-    }
-
-    .main-container {
-        padding: 5px; /* Reduce padding even more for smaller screens */
-    }
-
-    button {
-        font-size: 13px; /* Make button text smaller for phones */
-        padding: 8px 16px; /* Adjust button padding for phones */
-    }
-}
+/* .dark-mode button:hover {
+  background-color: var(--secondary-color-dark);
+} */
+  
