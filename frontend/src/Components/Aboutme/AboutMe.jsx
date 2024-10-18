@@ -6,10 +6,10 @@ import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Footer from "../Footer/Footer";
 
-function AboutMe() {
+function AboutMe({darkMode}) {
   return (
     <>
-      <section className="about-me-container">
+      <section className={`about-me-container ${ darkMode ? "dark-theme" : "light-theme" }`}>
         <div className="about-me-content">
           <div className="about-me-pane">
             <img src={UserImg} alt="Profile" className="profile-image" />
