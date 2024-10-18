@@ -26,7 +26,9 @@
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background-color: #fafafa;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.4s ease-in-out;
+  transition: transform var(--transition-duration) ease, 
+              box-shadow var(--transition-duration) ease, 
+              background-color var(--transition-duration) ease-in-out;
   ;
 }
 
@@ -39,7 +41,7 @@
 .tutorial-title {
   font-size: 1.75rem;
   margin-bottom: 15px;
-  color: #333333;
+  color: #f8f9fa;
   outline: none;
   width: fit-content;
 }

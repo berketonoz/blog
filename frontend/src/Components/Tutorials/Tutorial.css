@@ -11,19 +11,12 @@
   flex-direction: column;
 }
 
-.dark-theme{
-  background-color: #495057;
-}
-
-.light-theme{
-  background-color: #FAFAFA;
-}
-
 /* Tutorial Title */
 .tutorial-title {
   margin-bottom: 10px;
   font-size: 32px;
   font-weight: 700;
+  /* color: #f8f9fa; */
 }
 
 /* Tutorial Meta Information */
@@ -56,27 +49,6 @@
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 5px;
-}
-
-.language-badge {
-  padding: 5px 10px;
-  border-radius: 12px;
-  background-color: #ddd;
-  color: #242424;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.language-badge.active {
-  background-color: #007bff;
-  color: #ffffff;
-}
-
-.language-badge:hover,
-.language-badge:focus {
-  background-color: #3498db;
-  color: #ffffff;
-  outline: none;
 }
 
 /* Tutorial Headers */
@@ -123,40 +95,33 @@ hr {
   color: #e74c3c;
 }
 
-.nav-tabs .light-theme{
-  border-color: #000 !important;
+/* .nav-tabs .light-theme{
+  border-color: #dee2e6;
 }
 
-.nav-tabs{
-  border-color: #000 !important;
+.nav-tabs .dark-theme{
+  border-color: #212529;
+} */
+
+/* Transition for nav-link */
+.tutorial-wrapper .nav-tabs .nav-link {
+  transition: background-color var(--transition-duration) ease-in-out, 
+              color var(--transition-duration) ease-in-out, 
+              border-color var(--transition-duration) ease-in-out;
 }
 
-/* Hover State - Light Theme */
-.tutorial-wrapper.light-theme .nav-tabs .nav-link:hover {
-  background-color: #f0f0f0;
-  color: #000;
-  border-color: #ddd;
+/* Active State */
+.tutorial-wrapper .nav-tabs .nav-link.active {
+  background-color: var(--nav-link-active-bg);
+  color: var(--nav-link-active-color);
+  border-color: var(--nav-link-border-color) var(--nav-link-border-color) var(--nav-link-active-bg);
 }
 
-/* Active State - Light Theme */
-.tutorial-wrapper.light-theme .nav-tabs .nav-link.active {
-  background-color: #fff;
-  color: #000; /* Bootstrap's primary color */
-  border-color: #ddd #ddd #fff;
-}
-
-/* Hover State - Dark Theme */
-.tutorial-wrapper.dark-theme .nav-tabs .nav-link:hover {
-  background-color: #6f6f6f;
-  color: #fff;
-  border-color: #454d55;
-}
-
-/* Active State - Dark Theme */
-.tutorial-wrapper.dark-theme .nav-tabs .nav-link.active {
-  background-color: #4d4d4d;
-  color: #fff;
-  border-color: #343a40 #343a40 #4d4d4d;
+/* Hover State */
+.tutorial-wrapper .nav-tabs .nav-link:hover {
+  background-color: var(--nav-link-hover-bg);
+  color: var(--nav-link-hover-color);
+  border-color: var(--nav-link-border-color);
 }
 
 /* Responsive Design */

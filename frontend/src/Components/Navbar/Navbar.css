@@ -1,44 +1,23 @@
-/* Custom Navbar Styling */
+
 .navbar-custom {
   padding: 4px;
-  transition: background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-  z-index: 1000;
+  transition: background-color var(--transition-duration) ease-in-out, 
+              box-shadow var(--transition-duration) ease-in-out;
 }
 
-/* Transparent Background */
-.navbar-transparent {
-  backdrop-filter: blur(10px); /* Adds a blur effect for better readability */
-}
-
-.dark-theme{
-  color: #aeaeae;
-}
-
-.light-theme{
-  color: #333333;
-}
-
-/* Solid Background on Scroll */
 .navbar-bg {
-  /* background-color: rgba(255, 255, 255, 0.3); */
-  backdrop-filter: blur(4px); /* Adds a blur effect for better readability */
+  backdrop-filter: blur(10px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Logo Styling */
-.logo {
-  width: 60px;
-  height: auto;
-  transition: transform 0.3s ease-in-out;
+.navbar-dark {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
 }
 
-.logo:hover {
-  transform: scale(1.1);
-}
-
-.navbar-brand{
-  padding-top: 0px;
-  padding-bottom: 0px;
+.navbar-light {
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
 }
 
 /* Navbar Toggle (Hamburger) */
@@ -51,68 +30,95 @@
   box-shadow: none;
 }
 
+
+/* Navbar.css */
 .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
-
-/* Nav Links Styling */
-.animated-link {
+  display: flex;
+  margin-right: 25px;
   position: relative;
-  color: #555555 !important;
-  font-size: 1rem;
-  margin-right: 20px;
-  transition: color 0.3s ease-in-out;
+  width: 30px;
+  height: 2px;
+  background-color: #000;
+  transition: background-color var(--transition-duration) ease-in-out;
+  /* important for overwriting bootstrap.css background-image */
+  background-image: none !important;
 }
 
-.animated-link::after {
-  content: "";
+.dark-mode .navbar-toggler-icon {
+  background-color: #fff;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+  content: '';
   position: absolute;
-  width: 100%;
-  height: 2rem;
-  bottom: 4px;
-  left: 0;
-  border-radius: 10%;
-  transition: background-color 0.3s ease-in-out;
+  width: 30px;
+  height: 2px;
+  background-color: #000;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out, background-color var(--transition-duration) ease-in-out;
 }
 
-.animated-link:not(.no-hover):hover::after{
-  background-color: rgba(60, 60,60, 0.7);
+.dark-mode .navbar-toggler-icon::before,
+.dark-mode .navbar-toggler-icon::after {
+  background-color: #fff;
+  transition: background-color var(--transition-duration) ease-in-out, transform 0.3s ease-in-out, top 0.3s ease-in-out, bottom 0.3s ease-in-out;
 }
 
-.navbar-expand-md .navbar-collapse {
-  justify-content: flex-end;
+.navbar-toggler-icon::before {
+  top: -10px;
 }
 
-/* Align Nav Items to the Right */
-.navbar-nav {
-  align-items: center;
+.navbar-toggler-icon::after {
+  bottom: -10px;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .animated-link {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
+/* When the toggle is active, turn into an X */
+.navbar-toggler.open .navbar-toggler-icon {
+  background-color: transparent;
+  visibility: hidden;
 
-  .navbar-nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .navbar-transparent {
-    background-color: rgba(255, 255, 255, 0.8);
-  }
-
-  .navbar-bg {
-    background-color: #ffffff;
-  }
 }
 
+.navbar-toggler.open .navbar-toggler-icon::before {
+  top: 0;
+  transform: rotate(45deg);
+  visibility: visible;
+  /* transition: background-color 0.4s ease-in-out; */
+}
+
+.navbar-toggler.open .navbar-toggler-icon::after {
+  bottom: 0;
+  transform: rotate(-45deg);
+  visibility: visible;
+  /* transition: background-color 0.4s ease-in-out; */
+}
+
+/* Logo */
+.logo {
+  width: 60px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+}
+
+/* Navbar Links */
+.animated-link {
+  /* important for overwriting bootstrap.css color */
+  color: var(--text-color-light) !important;
+  margin-right: 20px;
+  transition: color 0.4s ease-in-out;
+}
+
+/* important for overwriting bootstrap.css color */
+.dark-mode .animated-link {
+  color: var(--text-color-dark) !important;
+}
 
 
 /* ToggleSwitch css */
-
 .toggle-switch {
   position: relative;
   display: inline-block;
@@ -156,23 +162,29 @@
 }
 
 /* When checked, change background color */
-.toggle-switch input:checked + .slider {
+.toggle-switch input:checked+.slider {
   background-color: #2196F3;
 }
 
 /* Move the circle when checked */
-.toggle-switch input:checked + .slider:before {
+.toggle-switch input:checked+.slider:before {
   transform: translateX(26px);
 }
 
 /* Optional: Add focus styles */
-.toggle-switch input:focus + .slider {
+.toggle-switch input:focus+.slider {
   box-shadow: 0 0 1px #2196F3;
 }
 
-.theme-slider{
+.theme-slider {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   font-size: 16px;
+  color: var(--text-color-light);
+  transition: color var(--transition-duration) ease-in-out;
+}
+
+.dark-mode .theme-slider {
+  color: #ffffff;
 }

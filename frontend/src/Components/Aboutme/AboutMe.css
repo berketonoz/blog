@@ -1,49 +1,44 @@
 .about-me-container {
   display: flex;
   flex-direction: column;
-  background-color: #f4f4f4; /* Light gray background */
   padding: 30px;
   border-radius: 10px;
   margin-top: 40px;
-  height: fit-content;
-}
-
-.about-me-content {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 100%; /* Full width */
-  max-width: 1200px; /* Maximum width for larger screens */
+  transition: background-color var(--transition-duration) ease-in-out;
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
 }
 
 .about-me-pane {
-  flex: 1; /* Allow this pane to grow */
-  margin-right: 20px; /* Space between panes */
+  display: flex;
+  justify-content: center;
 }
 
-.profile-image {
-  max-width: 250px; /* Set a fixed width */
-  height: auto; /* Keep aspect ratio */
-  border-radius: 10px;
-  margin-bottom: 20px;
+.dark-mode .about-me-container {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
 }
 
 .skills-list {
-  display: flex;           /* Enables flexbox */
-  flex-wrap: wrap;         /* Allows items to wrap onto the next line */
+  display: flex;
+  flex-wrap: wrap;
   padding: 0;
   margin: 0;
-  background-color: #f4f4f4; /* Background color for the entire list */
-  list-style-type: none;   /* Removes default list item markers */
+  list-style-type: none;
+  background-color: #f4f4f4;
 }
 
 .skills-list li {
-  padding: 10px 15px;      /* Padding inside each <li> */
-  margin: 5px;             /* Space between list items */
-  background-color: white; /* White background for each item */
-  border: 1px solid #ddd;  /* Border for each item */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Optional: Adds a subtle shadow to each item */
+  padding: 10px 15px;
+  margin: 5px;
+  background-color: white;
+  border: 1px solid #ddd;
   border-radius: 10px;
+}
+
+.dark-mode .skills-list li {
+  background-color: var(--background-color-dark);
+  border: 1px solid var(--text-color-dark);
 }
 
 .bio-content {
