@@ -15,7 +15,8 @@ function NavbarPanel({ darkMode, setDarkMode }) {
 
   // Function to handle scroll event
   const handleScroll = () => {
-    if (window.scrollY > 40) {
+    setExpanded(false);
+    if (window.scrollY > 5) {
       setNavbarBg(true);
     } else {
       setNavbarBg(false);
@@ -74,7 +75,12 @@ function NavbarPanel({ darkMode, setDarkMode }) {
           aria-controls="responsive-navbar-nav"
           aria-expanded={expanded}
           aria-label="Toggle navigation"
-        />
+          className={expanded ? "open" : ""}
+          onClick={() => setExpanded(!expanded)} // Set expanded state on click
+          aria-placeholder="Test"
+        >
+          <span className={`navbar-toggler-icon ${darkMode ? "dark-mode" : "light-mode"}`}></span>
+        </Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="">
             <Nav.Link
@@ -97,15 +103,15 @@ function NavbarPanel({ darkMode, setDarkMode }) {
             </Nav.Link>
             <Nav.Link
               as={Link}
-              to="/contact"
+              to="/projects"
               className="animated-link"
               onClick={handleLinkClick}
               aria-label="Contact Us"
             >
-              Contact
+              Projects
             </Nav.Link>
             <Nav.Item className="animated- no-hover" aria-label="theme">
-              <div className="theme-slider">
+              <div className="theme-slider" style={{marginTop: "5px"}}>
                 Dark Mode
                 <label className="toggle-switch">
                   <input
