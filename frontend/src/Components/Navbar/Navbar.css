@@ -1,23 +1,19 @@
 
 .navbar-custom {
   padding: 4px;
+  background-color: var(--background-navbar-color-light);
   transition: background-color var(--transition-duration) ease-in-out, 
               box-shadow var(--transition-duration) ease-in-out;
+}
+
+.dark-mode .navbar-custom {
+  background-color: var(--background-navbar-color-dark);
+  color: var(--text-color-dark);
 }
 
 .navbar-bg {
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.navbar-dark {
-  background-color: var(--background-color-dark);
-  color: var(--text-color-dark);
-}
-
-.navbar-light {
-  background-color: var(--background-color-light);
-  color: var(--text-color-light);
 }
 
 /* Navbar Toggle (Hamburger) */
