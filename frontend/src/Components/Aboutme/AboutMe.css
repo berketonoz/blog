@@ -4,9 +4,9 @@
   padding: 30px;
   border-radius: 10px;
   margin-top: 40px;
-  transition: background-color var(--transition-duration) ease-in-out;
   background-color: var(--background-color-light);
   color: var(--text-color-light);
+  transition: background-color var(--transition-duration) ease-in-out;
 }
 
 .about-me-pane {
@@ -19,13 +19,20 @@
   color: var(--text-color-dark);
 }
 
+.profile-image {
+  max-width: 250px; /* Set a fixed width */
+  height: auto; /* Keep aspect ratio */
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
 .skills-list {
   display: flex;
   flex-wrap: wrap;
   padding: 0;
   margin: 0;
   list-style-type: none;
-  background-color: #f4f4f4;
+  /* background-color: #f4f4f4; */
 }
 
 .skills-list li {
@@ -61,6 +68,24 @@
 
 .social-links a {
   margin: 0 10px; /* Space between icons */
+}
+
+.linkedin {
+  color: #0077B5;
+}
+
+.github {
+  color: #181717;
+}
+
+.email {
+  color: #6c757d;
+}
+
+a .linkedin:hover,
+a .github:hover,
+a .email:hover {
+  color: #888888;
 }
 
 /* Responsive Styles */

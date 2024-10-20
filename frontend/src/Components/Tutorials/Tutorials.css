@@ -29,7 +29,6 @@
   transition: transform var(--transition-duration) ease, 
               box-shadow var(--transition-duration) ease, 
               background-color var(--transition-duration) ease-in-out;
-  ;
 }
 
 .tutorial-item:hover {
@@ -41,7 +40,6 @@
 .tutorial-title {
   font-size: 1.75rem;
   margin-bottom: 15px;
-  color: #f8f9fa;
   outline: none;
   width: fit-content;
 }

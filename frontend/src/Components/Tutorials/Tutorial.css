@@ -16,7 +16,6 @@
   margin-bottom: 10px;
   font-size: 32px;
   font-weight: 700;
-  /* color: #f8f9fa; */
 }
 
 /* Tutorial Meta Information */
@@ -59,7 +58,6 @@
   font-size: 20px;
   font-family: 'Sohne', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
-  color: #333333;
 }
 
 /* Tutorial Details */
@@ -95,14 +93,6 @@ hr {
   color: #e74c3c;
 }
 
-/* .nav-tabs .light-theme{
-  border-color: #dee2e6;
-}
-
-.nav-tabs .dark-theme{
-  border-color: #212529;
-} */
-
 /* Transition for nav-link */
 .tutorial-wrapper .nav-tabs .nav-link {
   transition: background-color var(--transition-duration) ease-in-out, 
@@ -112,16 +102,27 @@ hr {
 
 /* Active State */
 .tutorial-wrapper .nav-tabs .nav-link.active {
-  background-color: var(--nav-link-active-bg);
+  background-color: var(--background-color-light);
   color: var(--nav-link-active-color);
-  border-color: var(--nav-link-border-color) var(--nav-link-border-color) var(--nav-link-active-bg);
+  border-color: #dee2e6 #dee2e6 var(--background-color-light);
+}
+
+.dark-mode .tutorial-wrapper .nav-tabs .nav-link.active {
+  background-color: var(--background-color-dark);
+  color: var(--nav-link-active-color);
+  border-color: #dee2e6 #dee2e6 var(--background-color-dark);
 }
 
 /* Hover State */
 .tutorial-wrapper .nav-tabs .nav-link:hover {
-  background-color: var(--nav-link-hover-bg);
-  color: var(--nav-link-hover-color);
-  border-color: var(--nav-link-border-color);
+  background-color: #909090;
+  color: #000;
+}
+
+.dark-mode .tutorial-wrapper .nav-tabs .nav-link:hover {
+  background-color: #090909;
+  color: #fff;
+
 }
 
 /* Responsive Design */
