@@ -57,12 +57,11 @@ function NavbarPanel({ darkMode, setDarkMode }) {
       expanded={expanded}
       expand="md"
       fixed="top"
-      className={`navbar-custom ${
-        navbarBg ? "navbar-bg" : "navbar-transparent"
-      } ${darkMode ? "dark-theme" : "light-theme"} ${
-        expanded ? "active" : ""
-      }`} // Add 'active' class when expanded
-      bg={`${darkMode ? "dark" : "light"}`}
+      // ${ navbarBg ? "navbar-bg" : "navbar-transparent" }
+      className={`navbar-custom 
+      ${ darkMode ? "dark-mode" : "" }
+      ${ expanded ? "active" : "" }`} // Add 'active' class when expanded
+      // bg={`${darkMode ? "dark" : "light"}`}
       onToggle={() => setExpanded(!expanded)} // Toggle expanded state
       ref={navRef}
       aria-label="Main Navigation"
@@ -71,61 +70,61 @@ function NavbarPanel({ darkMode, setDarkMode }) {
         <Navbar.Brand as={Link} to="/">
           <img src={LogoImg} alt="Company Logo" className="logo" />
         </Navbar.Brand>
-        <Navbar.Toggle
-          aria-controls="responsive-navbar-nav"
-          aria-expanded={expanded}
-          aria-label="Toggle navigation"
-          className={expanded ? "open" : ""}
-          onClick={() => setExpanded(!expanded)} // Set expanded state on click
-          aria-placeholder="Test"
-        >
-          <span className={`navbar-toggler-icon ${darkMode ? "dark-mode" : "light-mode"}`}></span>
-        </Navbar.Toggle>
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="">
-            <Nav.Link
-              as={Link}
-              to="/"
-              className="animated-link"
-              onClick={handleLinkClick}
-              aria-label="Home"
-            >
-              Home
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to="/about"
-              className="animated-link"
-              onClick={handleLinkClick}
-              aria-label="About Us"
-            >
-              About
-            </Nav.Link>
-            <Nav.Link
-              as={Link}
-              to="/projects"
-              className="animated-link"
-              onClick={handleLinkClick}
-              aria-label="Contact Us"
-            >
-              Projects
-            </Nav.Link>
-            <Nav.Item className="animated- no-hover" aria-label="theme">
-              <div className="theme-slider" style={{marginTop: "5px"}}>
-                Dark Mode
-                <label className="toggle-switch">
-                  <input
-                    type="checkbox"
-                    checked={darkMode}
-                    onChange={handleToggle}
-                  />
-                  <span className="slider"></span>
-                </label>
-              </div>
-            </Nav.Item>
-            {/* Add more Nav.Links here if needed */}
-          </Nav>
-        </Navbar.Collapse>
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            aria-expanded={expanded}
+            aria-label="Toggle navigation"
+            className={expanded ? "open" : ""}
+            onClick={() => setExpanded(!expanded)} // Set expanded state on click
+            aria-placeholder="Test"
+          >
+            <span className={`navbar-toggler-icon ${darkMode ? "dark-mode" : "light-mode"}`}></span>
+          </Navbar.Toggle>
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="">
+              <Nav.Link
+                as={Link}
+                to="/"
+                className="animated-link"
+                onClick={handleLinkClick}
+                aria-label="Home"
+              >
+                Home
+              </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="/about"
+                className="animated-link"
+                onClick={handleLinkClick}
+                aria-label="About Us"
+              >
+                About
+              </Nav.Link>
+              <Nav.Link
+                as={Link}
+                to="/projects"
+                className="animated-link"
+                onClick={handleLinkClick}
+                aria-label="Contact Us"
+              >
+                Projects
+              </Nav.Link>
+              <Nav.Item className="animated- no-hover" aria-label="theme">
+                <div className="theme-slider" style={{marginTop: "5px"}}>
+                  Dark Mode
+                  <label className="toggle-switch">
+                    <input
+                      type="checkbox"
+                      checked={darkMode}
+                      onChange={handleToggle}
+                    />
+                    <span className="slider"></span>
+                  </label>
+                </div>
+              </Nav.Item>
+              {/* Add more Nav.Links here if needed */}
+            </Nav>
+          </Navbar.Collapse>
       </Container>
     </Navbar>
   );
