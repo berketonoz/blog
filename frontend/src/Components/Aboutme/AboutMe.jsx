@@ -63,7 +63,7 @@ function AboutMe({darkMode}) {
           >
             <FontAwesomeIcon
               icon={faLinkedin}
-              style={{ color: "#0077B5" }}
+              className="linkedin"
               size="2x"
             />
           </a>
@@ -74,14 +74,14 @@ function AboutMe({darkMode}) {
           >
             <FontAwesomeIcon
               icon={faGithub}
-              style={{ color: "#181717" }}
+              className="github"
               size="2x"
             />
           </a>
           <a href="mailto:btonoz@alumni.sabanciuniv.edu">
             <FontAwesomeIcon
               icon={faEnvelope}
-              style={{ color: "#6c757d" }}
+              className="email"
               size="2x"
             />
           </a>
