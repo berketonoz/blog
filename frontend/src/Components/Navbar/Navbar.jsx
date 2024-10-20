@@ -57,11 +57,9 @@ function NavbarPanel({ darkMode, setDarkMode }) {
       expanded={expanded}
       expand="md"
       fixed="top"
-      // ${ navbarBg ? "navbar-bg" : "navbar-transparent" }
       className={`navbar-custom 
       ${ darkMode ? "dark-mode" : "" }
-      ${ expanded ? "active" : "" }`} // Add 'active' class when expanded
-      // bg={`${darkMode ? "dark" : "light"}`}
+      ${ expanded ? "active" : "" }`}
       onToggle={() => setExpanded(!expanded)} // Toggle expanded state
       ref={navRef}
       aria-label="Main Navigation"
