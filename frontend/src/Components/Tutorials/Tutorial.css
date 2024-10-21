@@ -2,7 +2,7 @@
 
 /* Tutorial Wrapper */
 .tutorial-wrapper {
-  margin: 80px 20px 20px 20px;
+  margin: 100px 20px 20px 20px;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -24,7 +24,6 @@
 .tutorial-languages {
   font-size: 16px;
   margin: 5px 0;
-  /* color: #555555; */
 }
 
 .tutorial-category::before {
@@ -70,7 +69,6 @@
 .function-description {
   margin: 10px 0;
   font-style: italic;
-  /* color: #555555; */
 }
 
 hr {
