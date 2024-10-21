@@ -1,9 +1,9 @@
 /* :root - Global CSS Variables */
 :root {
   --background-color-light: #f8f9fa;
-  --background-navbar-color-light: #dee2e6;
+  --background-navbar-color-light: #dee2e6a9;
   --background-color-dark: #343a40;
-  --background-navbar-color-dark: #212529;
+  --background-navbar-color-dark: #212529a9;
   --text-color-light: #333;
   --text-color-dark: #c9c9c9;
   --primary-color-light: #3498db;

@@ -3,6 +3,7 @@
   background-color: var(--background-navbar-color-light);
   transition: background-color var(--transition-duration) ease-in-out, 
               box-shadow var(--transition-duration) ease-in-out;
+  backdrop-filter: blur(5px);
 }
 
 .dark-mode .navbar-custom {
