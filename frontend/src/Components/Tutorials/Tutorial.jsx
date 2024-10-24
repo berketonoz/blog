@@ -82,7 +82,7 @@ const Tutorial = ({darkMode}) => {
           ))}
         </Tabs>
       </div>
-      <CommentForm comments={tutorial.comments} />
+      <CommentForm id={id} />
       <Footer />
     </>
   );
