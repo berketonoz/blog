@@ -1,20 +1,38 @@
 [
-  {
-    "id": 1,
-    "title": "Bloxorz 3D game solution finder using AI algorithms",
-    "description": "A* Heuristic search and many more search algorithms implementations",
-    "category": "AI/ML",
-    "publishDate": "2024-10-21",
-    "language": "Python",
-    "content": ""
-  },
-  {
-    "id": 2,
-    "title": "",
-    "description": "A* Heuristic search and many more search algorithms implemented on Bloxorz 3D game",
-    "category": "AI/ML",
-    "publishDate": "2024-10-21",
-    "language": "Python",
-    "content": ""
-  }
-]
+    {
+      "id": 1,
+      "title": "Project Title 1",
+      "description": "This is a short description of project 1.",
+      "category": "Web Development",
+      "publishDate": "2024-01-01",
+      "language": "JavaScript",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": [
+            { "content": "This project was built using ", "tag": false },
+            { "content": "React", "tag": true },
+            { "content": " and ", "tag": false },
+            { "content": "Node.js.", "tag": true }
+          ]
+        },
+        {
+          "type": "figure",
+          "src": "/images/project1-figure1.png",
+          "caption": "Figure 1: API Data Flow"
+        },
+        {
+          "type": "paragraph",
+          "text": [
+            { "content": "Below is a code snippet for setting up the server." }
+          ]
+        },
+        {
+          "type": "code",
+          "language": "javascript",
+          "content": "const express = require('express'); const app = express();"
+        }
+      ]
+    }
+  ]
+  
