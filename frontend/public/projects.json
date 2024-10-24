@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "title": "Bloxorz 3D game solution finder using AI algorithms",
+    "description": "A* Heuristic search and many more search algorithms implementations",
+    "category": "AI/ML",
+    "publishDate": "2024-10-21",
+    "language": "Python",
+    "content": [
+      {
+        "type": "paragraph",
+        "data": "My first encounter with this problem was in my junior year back in college in <b>CS404 - Artificial Intelligence</b>. I had friends from other areas asking if i could finish solving the problem but neither me nor none of my friends were able to find a solution. 2 years after, when i graduated i started attacking this problem in multiple ways. The algoirthms i've used for searching a solution through the maze was;"
+      },
+      {
+        "type": "sub_title",
+        "data": "<b>DFS(Depth-First Search)</b>"
+      },
+      {
+        "type": "paragraph",
+        "data": "The idea was to keep the adjacent nodes in the maze connected like a <b>LinkedList</b> while in maze setup process. Here is an example way of achieving this type of structure:"
+      },
+      {
+        "type": "code",
+        "data": "class Maze:\n    def __init__(self):\n        self.heads = []\n    def GetTheHead(self):\n        return self.heads[0]\n    def GetHeads(self):\n        return self.heads\n    def insert(self,data):\n        self.heads.append(data)\n    def FindGoal(self,heads):\n        temp_heads = heads\n        goal = []\n        for i in range(len(temp_heads)):\n            goal_x = goal_y = counter = 0\n            temporary = temp_heads[i]\n            while temporary != None:\n                if temporary.data == \"2\":\n                    goal_x = i\n                    goal_y = counter\n                    goal = [i,counter]\n                    print(\"result: \",[goal_x, goal_y])\n                    return goal\n                counter += 1\n                temporary = temporary.next\n\n    def setup(self,lines):\n        for i in range(len(lines)):                 #O(row)\n            lines[i] = lines[i].replace(\"\\n\",\"\")\n            head = Node(lines[i][0])\n            remain = lines[i][1:]\n            temp = head\n            while remain != \"\":                     #O(column)\n                n = Node(remain[0])\n                n.insert_previous(temp)\n                temp.insert_next(n)\n                remain = remain[1:]\n                temp = temp.next\n            self.insert(head)\n        count = 0\n        temporary = self.heads[0]\n        while temporary != None:\n            for i in range(len(lines)-1):\n                temp = self.heads[i]\n                temp_n = self.heads[i+1]\n                for k in range(count):\n                    temp = temp.next\n                    temp_n = temp_n.next\n                temp_n.insert_up(temp)\n                temp.insert_down(temp_n)\n            count += 1\n            temporary = temporary.next\n    def print(self):\n        temp = self.heads[0]\n        while temp != None:\n            temp_n = temp\n            while temp_n != None:\n                print(temp_n.data, end=\" \")\n                temp_n = temp_n.next\n            temp = temp.down\n            print()\n\nclass Node:\n    def __init__(self,data):\n        self.data = data\n        self.next = None\n        self.previous = None\n        self.up = None\n        self.down = None\n    def insert_next(self,n):\n        self.next = n\n    def insert_previous(self,n):\n        self.previous = n\n    def insert_up(self,n):\n        self.up = n\n    def insert_down(self,n):\n        self.down = n"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Face detection uisng machine learning in python",
+    "description": "Python implementation of a face detection app using machine learning models",
+    "category": "AI/ML",
+    "publishDate": "2024-10-23",
+    "language": "Python",
+    "content": []
+  }
+]
