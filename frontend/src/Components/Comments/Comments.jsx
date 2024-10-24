@@ -9,8 +9,7 @@ const CommentForm = ({ id }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
-  // const url = 'https://node-backend-766320992980.us-central1.run.app/api/comments';
-  const url = 'http://localhost:3001/api/comments';
+  const url = 'https://node-backend-766320992980.us-central1.run.app/api/comments';
 
   useEffect(() => {
     const fetchComments = () => {
