@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import "./Comments.css";
 
@@ -17,19 +17,14 @@ const CommentForm = ({ id }) => {
         .then(res => res.json())
         .then(data => {
           const filteredData = data.filter((d) => d.id === parseInt(id, 10));
-          setCommentsList(filteredData)
+          setCommentsList(filteredData);
         })
         .catch(err => console.log(err))
         .finally(() => setIsLoading(false))
     }
 
     fetchComments();
-  }, [id])
-
-
-  const getFormattedDateTime = () => {
-    return new Date().getDate(); // Return the Date object directly
-  };
+  }, [id]);
 
   const timeAgo = (timestamp) => {
     const date = new Date(timestamp);  // Convert timestamp to Date object
@@ -54,6 +49,13 @@ const CommentForm = ({ id }) => {
     return seconds <= 0 ? "Just now" : `${seconds} seconds ago`;
   };
 
+  // Memoize the result of timeAgo for each comment
+  const memoizedCommentsList = useMemo(() => {
+    return commentsList.map(comment => ({
+      ...comment,
+      timeAgo: timeAgo(comment.timestamp),
+    }));
+  }, [commentsList]);  // Only recalculates when commentsList changes
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -64,9 +66,7 @@ const CommentForm = ({ id }) => {
       return;
     }
 
-    // const commentDate = getFormattedDateTime(); // Get the current Date object
     const newComment = { id, type: 'T', username, comment };
-    setCommentsList([...commentsList, newComment]);
     fetch(url, {
       method: 'POST',
       headers: {
@@ -74,7 +74,11 @@ const CommentForm = ({ id }) => {
       },
       body: JSON.stringify(newComment)
     })
-      .then((res) => console.log(res))
+      .then((res) => {
+        if (res.status === 200)
+          newComment.timestamp = new Date();  // Add the current timestamp
+        setCommentsList([...commentsList, newComment]);  // Add new comment to the list
+      })
       .catch(err => console.log(err));
 
     // Clear the form fields
@@ -90,12 +94,12 @@ const CommentForm = ({ id }) => {
   return (
     <div className="comments-container">
       <div className="mt-3">
-        {commentsList.map((c, index) => (
+        {memoizedCommentsList.map((c, index) => (
           <Card key={`${c.date}-${index}`} className="mb-2">
             <Card.Body>
               <Card.Title>{c.username}</Card.Title>
               <Card.Text>{c.comment}</Card.Text>
-              <small className="text-muted">{timeAgo(c.timestamp)}</small> {/* Display time ago */}
+              <small className="text-muted">{c.timeAgo}</small> {/* Display memoized time ago */}
             </Card.Body>
           </Card>
         ))}
