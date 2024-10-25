@@ -9,23 +9,23 @@ import "./Tutorials.css"; // Import the external CSS file
 const Tutorials = ({darkMode}) => {
   const [tutorials, setTutorials] = useState([]);
   const navigate = useNavigate();
-  const tutorialsUrl =
-    "https://raw.githubusercontent.com/berketonoz/blog/refs/heads/dev/frontend/public/tutorials.json";
+  const tutorialsUrl = "https://raw.githubusercontent.com/berketonoz/blog/refs/heads/dev/frontend/public/tutorials.json";
   const commentsUrl = "https://node-backend-766320992980.us-central1.run.app/api/comments";
 
-  useEffect(() => {
-    const fetchTutorials = async () => {
-      try {
-        const response = await fetch(tutorialsUrl);
-        const data = await response.json();
-        data.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
-        setTutorials(data);
-      } catch (err) {
-        console.error("Failed to fetch tutorials:", err);
-      }
-    };
+  const getTutorials = async () => {
+    try {
+      const response = await fetch(tutorialsUrl);
+      const data = await response.json();
+      data.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+      setTutorials(data);
+    } catch (err) {
+      console.error("Failed to fetch tutorials:", err);
+    }
+  };
 
-    fetchTutorials();
+  useEffect(() => {
+
+    getTutorials();
   }, []);
 
   return (
