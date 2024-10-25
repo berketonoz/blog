@@ -8,25 +8,53 @@ import "./Tutorials.css"; // Import the external CSS file
 // Tutorials Component
 const Tutorials = ({darkMode}) => {
   const [tutorials, setTutorials] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const tutorialsUrl = "https://raw.githubusercontent.com/berketonoz/blog/refs/heads/dev/frontend/public/tutorials.json";
   const commentsUrl = "https://node-backend-766320992980.us-central1.run.app/api/comments";
 
   const getTutorials = async () => {
     try {
-      const response = await fetch(tutorialsUrl);
-      const data = await response.json();
-      data.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
-      setTutorials(data);
+      await fetch(tutorialsUrl)
+        .then(res => res.json())
+        .then(data => {
+          data.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
+          setTutorials(data)
+        })
+        .catch(err => console.log(err))
     } catch (err) {
       console.error("Failed to fetch tutorials:", err);
     }
   };
+  
+  const getComments = async () => {
+    try {
+      await fetch(commentsUrl)
+        .then(res => res.json())
+        .then(data => setComments(data))
+        .catch(err => console.log(err))
+    } catch (err) {
+      console.error("Failed to fetch comments:", err);
+    }
+  }
+
+  const getNumberOfComments = (id) => {
+    return comments.filter((comment => comment.id === id)).length;
+  }
 
   useEffect(() => {
+    const fetchData = async () => {
+      await getTutorials();
+      await getComments();
+      setIsLoading(false);
+    };
 
-    getTutorials();
+    fetchData();
   }, []);
+
+  if (isLoading) 
+    return <div>Loading...</div>
 
   return (
     <div className={`tutorial-container ${darkMode ? "" : ""}`}>
@@ -65,7 +93,7 @@ const Tutorials = ({darkMode}) => {
               </div>
               <div className="detail-group">
                 <FontAwesomeIcon icon={faComment} />{" "}
-                <span>{tutorial.comments.length} Comments</span>
+                <span>{getNumberOfComments(tutorial.id)} Comments</span>
               </div>
             </div>
             <p className="tutorial-description">{tutorial.description}</p>
