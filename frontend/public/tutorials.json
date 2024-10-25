@@ -44,8 +44,7 @@
         "isEmpty": "def isEmpty(self):\n    return len(self.items) == 0",
         "main": "if __name__ == '__main__':\n    stack = Stack()\n    stack.push(1)\n    stack.push(2)\n    print(stack.pop())\n    print(stack.isEmpty())"
       }
-    },
-    "comments": []
+    }
   },
   {
     "id": 2,
@@ -91,8 +90,7 @@
         "print": "def printList(self):\n        temp = self.head\n        while temp:\n            print(temp.data,end=\"\")\n            if temp.next:\n                print(\" -> \",end=\"\")\n            temp = temp.next\n        print()\n\n        # Prints the linked list by traversing from head to the last node.",
         "main": "def main():\n    linked_list = LinkedList()\n    linked_list.insert(1)\n    linked_list.insert(2)\n    linked_list.insert(3)\n    linked_list.printList()  # Output: 1 -> 2 -> 3\n\n    linked_list.delete(2)\n    linked_list.printList()  # Output: 1 -> 3\n    linked_list.delete(1)\n    linked_list.printList()  # Output: 3\n    linked_list.delete(3)\n    linked_list.printList()  # Output: \n\nif __name__ == '__main__':\n    main()\n\n        # Demonstrates inserting, deleting, and printing nodes in the linked list."
       }
-    },
-    "comments": []
+    }
   },
   {
     "id": 3,
@@ -137,8 +135,7 @@
         "delete": "def delete(self, value):\n    bucket = hash(value) % self.size\n    if bucket in self.table and value in self.table[bucket]:\n        self.table[bucket].remove(value)\n        if not self.table[bucket]:  # if the bucket is empty after removal, you might want to clean up\n            del self.table[bucket]",
         "main": "def main():\n    # Create a hash table with a certain size\n    ht = HashTable(10)\n\n        # Test inserting elements\n    print(\"Inserting elements into the hash table...\")\n    ht.insert(1)\n    ht.insert(2)\n    ht.insert(3)\n    ht.insert(10)  # This will collide with 1 if hash function is modulo size\n\n    # Test lookup\n    print(\"Looking up elements...\")\n    print(f\"Element 2 found: {'Yes' if ht.lookup(2) else 'No'}\")\n    print(f\"Element 5 found: {'Yes' if ht.lookup(5) else 'No'}\")\n\n    # Test deletion\n    print(\"Deleting element 2...\")\n    ht.delete(2)\n    print(f\"Element 2 found after deletion: {'Yes' if ht.lookup(2) else 'No'}\")\n\n    # Re-insert and test\n    print(\"Re-inserting element 2...\")\n    ht.insert(2)\n    print(f\"Element 2 found after re-inserting: {'Yes' if ht.lookup(2) else 'No'}\")\n\nif __name__ == \"__main__\":\n    main()"
       }
-    },
-    "comments": []
+    }
   },
   {
     "id": 4,
@@ -187,8 +184,7 @@
         "isEmpty": "def isEmpty(self):\n    return len(self.q) == 0",
         "main": "def main():\n    q = Queue()  # Create a queue for integers\n    print(\"Enqueuing elements{1,2,3,4}...\")\n    q.enqueue(1)\n    q.enqueue(2)\n    q.enqueue(3)\n    q.enqueue(4)  # This was not included in your original C++ enqueuing, but added as per the printed message\n\n    print(f\"Current front element: {q.peek()}\")  # Should print 1\n\n    print(\"Dequeuing...\")\n    q.dequeue()\n    print(f\"New front element after one dequeue: {q.peek()}\")  # Should print 2\n\n    print(f\"Checking if queue is empty: {'Yes' if q.isEmpty() else 'No'}\")  # Should print No\n\n    print(\"Dequeuing remaining elements...\")\n    q.dequeue()\n    q.dequeue()\n    q.dequeue()  # Added one more dequeue to empty the queue after adding 4th element\n\n    print(f\"Checking if queue is empty after dequeuing all elements: {'Yes' if q.isEmpty() else 'No'}\")  # Should print Yes\n\n    try:\n        print(\"Attempting to peek into an empty queue: \", end=\"\")\n        print(q.peek())\n    except IndexError as e:\n        print(e)  # Should catch and print \"Queue is empty\"\n\nif __name__ == \"__main__\":\n    main()"
       }
-    },
-    "comments": []
+    }
   },
   {
     "id": 5,
@@ -235,7 +231,6 @@
         "inorder": "def __inorder__(self,node):\n    if node.left:\n        self.__inorder__(node.left)\n    print(node.data, end=\" \")\n    if node.right:\n        self.__inorder__(node.right)\n\ndef inorder(self):\n    print(\"Inorder: \",  end=\"\")    self.__inorder__(self.root)    print()",
         "main": "def main():\n    tree = BinaryTree()\n    tree.insert(31)\n    tree.insert(13)\n    tree.insert(23)\n    tree.insert(54)\n    tree.insert(72)\n    tree.insert(91)\n\n    tree.inorder()\n    tree.delete(14)\n    tree.inorder()\n    tree.delete(15)\n    tree.inorder()\n    tree.delete(13)\n    tree.inorder()\n    tree.delete(31)\n    tree.inorder()\n    tree.delete(54)\n    tree.inorder()\n    tree.delete(13)\n    tree.inorder()\n\nif __name__ == \"__main__\":\n    main()"
       }
-    },
-    "comments": []
+    }
   }
 ]
