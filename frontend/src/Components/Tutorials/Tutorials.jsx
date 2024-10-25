@@ -9,13 +9,14 @@ import "./Tutorials.css"; // Import the external CSS file
 const Tutorials = ({darkMode}) => {
   const [tutorials, setTutorials] = useState([]);
   const navigate = useNavigate();
-  const url =
+  const tutorialsUrl =
     "https://raw.githubusercontent.com/berketonoz/blog/refs/heads/dev/frontend/public/tutorials.json";
+  const commentsUrl = "https://node-backend-766320992980.us-central1.run.app/api/comments";
 
   useEffect(() => {
     const fetchTutorials = async () => {
       try {
-        const response = await fetch(url);
+        const response = await fetch(tutorialsUrl);
         const data = await response.json();
         data.sort((a, b) => new Date(b.publishDate) - new Date(a.publishDate));
         setTutorials(data);
@@ -25,7 +26,7 @@ const Tutorials = ({darkMode}) => {
     };
 
     fetchTutorials();
-  }, [url]);
+  }, []);
 
   return (
     <div className={`tutorial-container ${darkMode ? "" : ""}`}>
