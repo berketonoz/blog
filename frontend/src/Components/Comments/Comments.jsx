@@ -9,21 +9,38 @@ const CommentForm = ({ id }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const url = 'https://node-backend-766320992980.us-central1.run.app/api/comments';
+  const commentsUrl = 'https://node-backend-766320992980.us-central1.run.app/api/comments';
+
+  const getComments = () => {
+    fetch(commentsUrl)
+      .then(res => res.json())
+      .then(data => {
+        const filteredData = data.filter((d) => d.id === parseInt(id, 10));
+        setCommentsList(filteredData);
+      })
+      .catch(err => console.log(err))
+      .finally(() => setIsLoading(false))
+  }
+
+  const postComment = (newComment) => {
+    fetch(commentsUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newComment)
+    })
+      .then((res) => {
+        if (res.status === 200)
+          newComment.timestamp = new Date();  // Add the current timestamp
+        setCommentsList([...commentsList, newComment]);  // Add new comment to the list
+      })
+      .catch(err => console.log(err));
+  }
+
 
   useEffect(() => {
-    const fetchComments = () => {
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          const filteredData = data.filter((d) => d.id === parseInt(id, 10));
-          setCommentsList(filteredData);
-        })
-        .catch(err => console.log(err))
-        .finally(() => setIsLoading(false))
-    }
-
-    fetchComments();
+    getComments();
   }, [id]);
 
   const timeAgo = (timestamp) => {
@@ -67,19 +84,7 @@ const CommentForm = ({ id }) => {
     }
 
     const newComment = { id, type: 'T', username, comment };
-    fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(newComment)
-    })
-      .then((res) => {
-        if (res.status === 200)
-          newComment.timestamp = new Date();  // Add the current timestamp
-        setCommentsList([...commentsList, newComment]);  // Add new comment to the list
-      })
-      .catch(err => console.log(err));
+    postComment(newComment);
 
     // Clear the form fields
     setUsername("");
